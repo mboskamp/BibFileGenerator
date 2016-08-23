@@ -5,10 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleController">
-   <center>
-      <Button mnemonicParsing="false" onAction="#pressButton" text="Button" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.SampleController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -30,4 +27,7 @@
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <Button mnemonicParsing="false" onAction="#pressButton" text="Button" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
