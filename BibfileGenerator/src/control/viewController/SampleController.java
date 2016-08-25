@@ -1,4 +1,4 @@
-package control;
+package control.viewController;
 
 import javafx.fxml.FXML;
 
