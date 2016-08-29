@@ -1,0 +1,28 @@
+		ISBN isbn10_valid = ISBNFactory.getInstance().getISBN("3-86680-192-0");
+		System.out.println(isbn10_valid.toFormattedString());
+
+		ISBN isbn10_valid_dirty = ISBNFactory.getInstance().getISBN("ab3-8fsf6680-1%92-0,");
+		System.out.println(isbn10_valid_dirty.toFormattedString());
+		
+		ISBN isbn10_validX = ISBNFactory.getInstance().getISBN("3-690-08783-X");
+		System.out.println(isbn10_validX.toFormattedString());
+		
+		try {
+			ISBN isbn10_invalid = ISBNFactory.getInstance().getISBN("3-86680-192-9");
+			System.out.println(isbn10_invalid.toFormattedString());			
+		} catch (RuntimeException e) {
+			System.out.println("isbn invalid");
+		}
+		
+		ISBN isbn13_valid = ISBNFactory.getInstance().getISBN("978-3-86680-192-9");
+		System.out.println(isbn13_valid.toFormattedString());
+		
+		ISBN isbn13_valid_dirty = ISBNFactory.getInstance().getISBN("978-3-f86      68&/0-192-abc9");
+		System.out.println(isbn13_valid_dirty.toFormattedString());
+		
+		try {
+			ISBN isbn13_invalid = ISBNFactory.getInstance().getISBN("978-3-86680-192-4");
+			System.out.println(isbn13_invalid.toFormattedString());
+		} catch (RuntimeException e) {
+			System.out.println("isbn invalid");
+		}

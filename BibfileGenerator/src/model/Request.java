@@ -8,14 +8,14 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Request {
 	
-	public static byte[] HmacSHA256(String data, byte[] key) throws Exception  {
+	private static byte[] HmacSHA256(String data, byte[] key) throws Exception  {
 	     String algorithm="HmacSHA256";
 	     Mac mac = Mac.getInstance(algorithm);
 	     mac.init(new SecretKeySpec(key, algorithm));
 	     return mac.doFinal(data.getBytes("UTF8"));
 	}
 
-	public static byte[] getSignatureKey(String key, String dateStamp, String regionName, String serviceName) throws Exception  {
+	private static byte[] getSignatureKey(String key, String dateStamp, String regionName, String serviceName) throws Exception  {
 	     byte[] kSecret = ("AWS4" + key).getBytes("UTF8");
 	     byte[] kDate    = HmacSHA256(dateStamp, kSecret);
 	     byte[] kRegion  = HmacSHA256(regionName, kDate);
@@ -24,8 +24,8 @@ public class Request {
 	     return kSigning;
 	}
 	
-	//TODO ISBN übergeben
-	public static void fireRequest(){
+	
+	public static void fireRequest(ISBN isbn){
 		String tstmp = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm:ss.SSS").format(new Date());
 		System.out.println(tstmp);
 	}
