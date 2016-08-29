@@ -47,6 +47,7 @@
             <Button mnemonicParsing="false" onAction="#pressButton" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <TextField fx:id="isbn" prefHeight="27.0" prefWidth="234.0" promptText="ISBN" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ProgressBar fx:id="progress" prefHeight="20.0" prefWidth="281.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="internet" alignment="TOP_LEFT" text="" />
          </children>
       </GridPane>
    </center>

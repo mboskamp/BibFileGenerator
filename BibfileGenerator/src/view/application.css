@@ -1,1 +1,8 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.internet_label_connection {
+	-fx-background-color: green;
+	-fx-text-fill: white;
+}
+.internet_label_no_connection {
+	-fx-background-color: red;
+	-fx-text-fill: black;
+}

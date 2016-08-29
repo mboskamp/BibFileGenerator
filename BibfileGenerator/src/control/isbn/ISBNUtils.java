@@ -1,6 +1,6 @@
 package control.isbn;
 
-import model.ISBN;
+import model.isbn.ISBN;
 
 /**
  * Provides static access to ISBN validation functionality.
