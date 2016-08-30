@@ -6,6 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 import model.isbn.ISBNType;
 
+/**
+ * Represents an ISBN object. The constructor should not be used directly. You
+ * should use {@link ISBNUtils#validateAndReturn(String)} to get your ISNN
+ * object because a validation will be performed.
+ * 
+ * @author Miklas Boskamp
+ */
 @Getter
 @Setter
 public class ISBN {

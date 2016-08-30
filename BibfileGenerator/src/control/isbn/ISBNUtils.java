@@ -114,12 +114,13 @@ public class ISBNUtils {
 	 */
 	public static String convertISBNType(String isbn) {
 		if (isbn.length() == 10) {
-			isbn = isbn.substring(0, 10);
-			isbn += calcCheckSum10(isbn);
+			isbn = isbn.substring(0, 9);
 			isbn = "978" + isbn;
+			isbn += calcCheckSum13(isbn);
 		} else if (isbn.length() == 13) {
 			isbn = isbn.substring(3, 12);
-			isbn += calcCheckSum10(isbn);
+			int check = calcCheckSum10(isbn);
+			isbn += check == 10 ? "X" : check;
 		}
 
 		return isbn;
