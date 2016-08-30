@@ -43,6 +43,6 @@ public class Main extends Application {
 		} else {
 			System.out.println("No Internet :(");
 		}
-		launch(args);
+		//launch(args);
 	}
 }
