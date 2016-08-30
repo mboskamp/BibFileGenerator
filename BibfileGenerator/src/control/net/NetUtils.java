@@ -95,8 +95,6 @@ public class NetUtils {
 	 *            the ISBN number to lookup in the database.
 	 */
 	public static void fireRequest(ISBN isbn) {
-		//String tstmp = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm:ss.SSS").format(new Date());
-
 		String url = "https://www.googleapis.com/books/v1/volumes";
 		Charset charset = java.nio.charset.StandardCharsets.UTF_8;
 		String paramName = "q";

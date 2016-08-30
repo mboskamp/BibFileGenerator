@@ -24,8 +24,8 @@ public class SampleController {
 		System.out.println("pressed");
 		progress.setProgress(0.0);
 		String input = isbn.getText();
+		NetUtils.fireRequest(ISBNUtils.validateAndReturn(input));
 		boolean valid = ISBNUtils.validateISBN(input);
-		System.out.println(valid);
 		if(valid){
 			progress.setProgress(100.0);
 		}

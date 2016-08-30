@@ -1,11 +1,14 @@
 package view;
 
+import java.io.InputStream;
+
 import control.net.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import test.ISBNTest;
 
 /**
  * Entry point of this application. Contains the {@link #main(String[])} method.
@@ -44,5 +47,6 @@ public class Main extends Application {
 			System.out.println("No Internet :(");
 		}
 		//launch(args);
+		ISBNTest test = new ISBNTest();
 	}
 }

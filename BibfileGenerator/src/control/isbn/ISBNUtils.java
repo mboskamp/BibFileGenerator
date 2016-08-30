@@ -199,7 +199,8 @@ public class ISBNUtils {
 			int multiplicator = i % 2 == 0 ? 3 : 1;
 			sum += multiplicator * n;
 		}
-		int check = 10 - (sum % 10);
-		return String.valueOf(check);
+		int mod = sum % 10;
+		int check = 10 - mod;
+		return mod == 0 ? String.valueOf(mod) : String.valueOf(check);
 	}
 }
