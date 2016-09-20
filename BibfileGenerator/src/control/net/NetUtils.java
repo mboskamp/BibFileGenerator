@@ -8,10 +8,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
 
 import model.isbn.ISBN;
 
@@ -22,6 +20,8 @@ import model.isbn.ISBN;
  */
 public class NetUtils {
 
+	public static String ERROR = "error";
+	
 	/**
 	 * This method checks, if the runtime device has Internet access, by firing
 	 * a request to google.com.
@@ -49,9 +49,9 @@ public class NetUtils {
 	 * @param isbn
 	 *            the ISBN number to lookup in the database.
 	 */
-	public static void fireRequest(ISBN isbn) {
+	public static String fireRequest(ISBN isbn) {
 		String url = "https://www.googleapis.com/books/v1/volumes";
-		Charset charset = java.nio.charset.StandardCharsets.UTF_8;
+		Charset charset = StandardCharsets.UTF_8;
 		String paramName = "q";
 		String param = "ISBN";
 
@@ -65,8 +65,8 @@ public class NetUtils {
 			
 			Scanner scanner = new Scanner(response);
 			String responseBody = scanner.useDelimiter("\\A").next();
-			System.out.println(responseBody);
 			scanner.close();
+			return responseBody;
 		} catch (UnsupportedEncodingException e) {
 			//Should not happen, as the encoding is standard UTF-8
 			System.out.println("Unsupported encoding");
@@ -75,5 +75,6 @@ public class NetUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return ERROR;
 	}
 }

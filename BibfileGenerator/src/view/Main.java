@@ -1,12 +1,11 @@
 package view;
 
-import control.net.NetUtils;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import test.ISBNTest;
 
 /**
  * Entry point of this application. Contains the {@link #main(String[])} method.
@@ -22,9 +21,10 @@ public class Main extends Application {
 	 */
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("view/Sample.fxml"));
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
 			Scene scene = new Scene(root, 700, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -39,13 +39,6 @@ public class Main extends Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (NetUtils.netIsAvailable()) {
-			System.out.println("Internet works.");
-		} else {
-			System.out.println("No Internet :(");
-		}
-		//launch(args);
-		ISBNTest test = new ISBNTest();
-		test.run();
+		launch(args);
 	}
 }
