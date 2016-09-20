@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import org.junit.Test;
+
 import control.isbn.ISBNUtils;
+import junit.framework.Assert;
 import model.isbn.ISBN;
 
 public class ISBNTest {
@@ -14,6 +17,7 @@ public class ISBNTest {
 	 * Runs this ISBN test. The test reads a test case file from
 	 * <code>/src</code> and validates accordingly.
 	 */
+	@Test
 	public void run() {
 		InputStream in = getClass().getClassLoader().getResourceAsStream("isbn_test_cases");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -27,22 +31,14 @@ public class ISBNTest {
 					if (modes[modecount].contains("convert")) {
 						convert(line);
 					} else if (modes[modecount].contains("invalid")) {
-						try {
-							ISBNUtils.validateAndReturn(line);
-						} catch (RuntimeException e) {
-							System.out.println("read invalid isbn: " + line);
-						}
+						ISBN isbn = ISBNUtils.validateAndReturn(line);
+						Assert.assertNull(isbn);
 					} else {
-						try {
-							ISBN isbn = ISBNUtils.validateAndReturn(line);
-							System.out.println("read valid isbn: " + isbn.toFormattedString());
-						} catch (RuntimeException e) {
-							e.printStackTrace();
-						}
+						ISBN isbn = ISBNUtils.validateAndReturn(line);
+						Assert.assertNotNull(isbn);
 					}
 				} else {
 					modecount++;
-					System.out.println("mode " + modecount + " " + modes[modecount]);
 				}
 			}
 		} catch (IOException e) {
@@ -53,16 +49,15 @@ public class ISBNTest {
 	/**
 	 * Takes a line from the test case file with two space-separated ISBN number
 	 * of different type. Calls {@link ISBNUtils#convertISBNType(String)}.
-	 * @param line the line from the test case file containing two space-separated ISBN numbers.
+	 * 
+	 * @param line
+	 *            the line from the test case file containing two
+	 *            space-separated ISBN numbers.
 	 */
 	private void convert(String line) {
 		String[] isbns = line.split(" ");
 		String converted = ISBNUtils.convertISBNType(isbns[0]);
 		isbns[1] = ISBNUtils.cleanISBNString(isbns[1]);
-		if (!converted.equals(isbns[1])) {
-			throw new RuntimeException("Error converting " + isbns[0] + " to " + isbns[1]);
-		} else {
-			System.out.println("converted " + isbns[0] + " to " + isbns[1]);
-		}
+		Assert.assertEquals(isbns[1], converted);
 	}
 }

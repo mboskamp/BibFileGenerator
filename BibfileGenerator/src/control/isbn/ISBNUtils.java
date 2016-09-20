@@ -13,7 +13,6 @@ import model.isbn.ISBN;
  */
 public class ISBNUtils {
 
-	private static final String UNKNOWN_ERROR_MESSAGE = "ISBN is malformed or has an invalid length";
 	private static final String LENGTH_ERROR_MESSAGE = "ISBN has Invalid length";
 
 	/**
@@ -23,13 +22,13 @@ public class ISBNUtils {
 	 * @param input
 	 *            The ISBN number as a String. Can contain hyphens and/or
 	 *            whitespace.
-	 * @return An {@link ISBN} Object
+	 * @return An {@link ISBN} Object or null if the input String is not a valid ISBN
 	 */
 	public static ISBN validateAndReturn(String isbn) {
 		if (validateISBN(isbn)) {
 			return new ISBN(isbn);
 		}
-		throw new RuntimeException(UNKNOWN_ERROR_MESSAGE);
+		return null;
 	}
 
 	/**
@@ -44,7 +43,8 @@ public class ISBNUtils {
 	 *            The ISBN number as a String. Can contain hyphens and/or
 	 *            whitespace.
 	 * @return The result of either {@link #validate10(String)} or
-	 *         {@link #validate13(String)}.
+	 *         {@link #validate13(String)} or <code>false</code> if the cleaned
+	 *         input is neither 10 nor 13 characters long.
 	 */
 	public static boolean validateISBN(String input) {
 		String isbn = cleanISBNString(input);
@@ -53,7 +53,7 @@ public class ISBNUtils {
 		} else if (isbn.length() == 13) {
 			return validate13(isbn);
 		}
-		throw new RuntimeException(UNKNOWN_ERROR_MESSAGE);
+		return false;
 	}
 
 	/**
@@ -95,9 +95,9 @@ public class ISBNUtils {
 		}
 		int calculated_sum = calcCheckSum10(isbn);
 		int sum;
-		if(isbn.charAt(9) == 'X'){
+		if (isbn.charAt(9) == 'X') {
 			sum = 10;
-		}else{
+		} else {
 			sum = Character.getNumericValue(isbn.charAt(9));
 		}
 		return calculated_sum == sum;
@@ -131,14 +131,15 @@ public class ISBNUtils {
 	 * digit. ISBN10 allows the character 'X' at the end (index 9), so this is
 	 * allowed too.
 	 * 
-	 * @param input THe string to be stripped.
+	 * @param input
+	 *            THe string to be stripped.
 	 * @return The string containing only digits. ('X' at index 9 is allowed)
 	 */
 	public static String cleanISBNString(String input) {
 		String isbn = "";
 		for (int i = 0; i < input.toCharArray().length; i++) {
 			char c = input.toCharArray()[i];
-			if (Character.isDigit(c) || (c == 'X' && isbn.length() == 9 )) {
+			if (Character.isDigit(c) || (c == 'X' && isbn.length() == 9)) {
 				isbn += c;
 			}
 		}
@@ -170,7 +171,7 @@ public class ISBNUtils {
 			sum += i * n;
 		}
 		int check = sum % 11;
-		
+
 		return check;
 	}
 
