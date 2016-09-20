@@ -1,7 +1,10 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import model.isbn.ISBN;
 
 /**
  * Represents a book fetched via ISBN request or that was typed in manually via
@@ -11,21 +14,20 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@SuppressWarnings("unused") //remove when class is implemented
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
-
+	
 	private Author[] author;
 	private String title;
 	private String publisher;
-	private int year;
-
-	private String isbn10;
-	private String isbn13;
-
-	private int number;
-	private int pages;
+	private String year;
+	
+	private ISBN isbn;
+	
+	private String number;
+	private Long pages;
 	private String month;
 	private String note;
-	private String key;
-
+	private String key;	
 }
