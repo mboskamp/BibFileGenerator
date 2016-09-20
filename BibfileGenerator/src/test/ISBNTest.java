@@ -19,7 +19,7 @@ public class ISBNTest {
 	 */
 	@Test
 	public void run() {
-		InputStream in = getClass().getClassLoader().getResourceAsStream("isbn_test_cases");
+		InputStream in = getClass().getClassLoader().getResourceAsStream("test/isbn_test_cases");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line = "";
 		String[] modes = { "10_valid_clean", "10_valid_dirty", "10_invalid_clean", "13_valid_clean", "13_invalid_clean",
