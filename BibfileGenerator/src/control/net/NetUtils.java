@@ -29,9 +29,9 @@ public class NetUtils {
 	 * @return <code>True</code> if google.com answered to the request and
 	 *         <code>false</code> if there was no answer.
 	 */
-	public static boolean netIsAvailable() {
+	public static boolean isNetAvailable() {
 		try {
-			final URL url = new URL("http://www.google.com");
+			final URL url = new URL("https://www.googleapis.com/books/v1/volumes");
 			final URLConnection conn = url.openConnection();
 			conn.connect();
 			return true;
