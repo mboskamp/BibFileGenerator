@@ -59,7 +59,7 @@ public class BibFile {
 			formatter.format(database, writer);
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Error while exporting
 			e.printStackTrace();
 		}
 	}
@@ -70,7 +70,7 @@ public class BibFile {
 		try {
 			formatter.format(database, writer);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Error while exporting
 			e.printStackTrace();
 		}
 		return writer.toString();

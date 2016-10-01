@@ -44,7 +44,7 @@ public class JSONUtils {
 			if (books.size() != 0) {
 				return books;
 			} else {
-				System.out.println("Error parsing JSON");
+				//TODO: Error parsing JSON
 				return null;
 			}
 		}
