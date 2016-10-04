@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.NewEntryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.MainController">
    <top>
       <GridPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -20,7 +20,13 @@
             <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="37.0" prefWidth="275.0" promptText="ISBN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <MenuButton alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Buchquelle" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Internetquelle" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <TextField prefHeight="37.0" prefWidth="275.0" text="ISBN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Suche ISBN" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <ImageView fitHeight="35.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <image>
@@ -28,7 +34,6 @@
                </image>
             </ImageView>
             <Label prefHeight="0.0" prefWidth="275.0" text="Keine gültige ISBN! Überprüfe deine \n Angabe!" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-            <ChoiceBox fx:id="entryType" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </top>
@@ -102,7 +107,7 @@
                   <RowConstraints maxHeight="49.0" minHeight="8.0" prefHeight="8.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" text="Abbrechen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                  <Button mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
                   <Button mnemonicParsing="false" text="Eintrag Hinzufügen" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
                </children>
             </GridPane>

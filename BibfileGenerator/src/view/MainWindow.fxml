@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.MainWindowController">
    <top>
       <BorderPane prefHeight="55.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <top>
@@ -41,7 +41,7 @@
                 <Button mnemonicParsing="false" text="Save" />
                   <Button mnemonicParsing="false" text="Load" />
                   <Button mnemonicParsing="false" text="Export" />
-                  <Button mnemonicParsing="false" text="+" />
+                  <Button mnemonicParsing="false" onAction="#add" text="+" />
                   <Button mnemonicParsing="false" text="-" />
               </items>
             </ToolBar>

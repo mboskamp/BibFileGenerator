@@ -21,7 +21,7 @@ public class Main extends Application {
 	 */
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("view/MainWindow.fxml"));
 			Scene scene = new Scene(root, 700, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
