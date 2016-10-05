@@ -12,9 +12,9 @@
          <content>
             <BorderPane maxHeight="350.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="350.0" prefWidth="587.0">
                <center>
-                  <HBox maxHeight="260.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="260.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+                  <HBox maxHeight="424.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="424.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                      <children>
-                        <GridPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" prefWidth="286.0">
+                        <GridPane minHeight="300.0" prefHeight="375.0">
                            <children>
                               <Label fx:id="authorLabel" text="Autor">
                                  <GridPane.margin>
@@ -74,9 +74,9 @@
                               <Separator prefWidth="200.0" GridPane.rowIndex="6" />
                               <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                               <TextField fx:id="author" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" />
-                              <TextField minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="title" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="year" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="publisher" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <TextField fx:id="volume" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                               <TextField fx:id="series" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                               <TextField fx:id="address" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
@@ -130,7 +130,7 @@
                         </GridPane>
                         <BorderPane prefHeight="260.0" prefWidth="224.0">
                            <center>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                              <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                                  <image>
                                     <Image url="@../images/book_image.png" />
                                  </image>
@@ -139,18 +139,18 @@
                            <top>
                               <GridPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Label text="ISBN 10:">
+                                    <Label fx:id="isbn10Label" text="ISBN 10:">
                                        <GridPane.margin>
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="ISBN 13:" GridPane.rowIndex="1">
+                                    <Label fx:id="isbn13Label" text="ISBN 13:" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="3-86680-192-0" GridPane.columnIndex="1" />
-                                    <Label text="978-3-86680-192-9" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="isbn10" GridPane.columnIndex="1" />
+                                    <Label fx:id="isbn13" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="62.0" />
@@ -175,7 +175,7 @@
                <top>
                   <GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="isbn" prefHeight="37.0" prefWidth="275.0" promptText="ISBN">
+                        <TextField fx:id="isbn" prefHeight="37.0" prefWidth="275.0" promptText="ISBN" text="3551354022">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -196,11 +196,6 @@
                               <Insets left="7.5" right="7.5" top="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="isbnError" prefHeight="0.0" prefWidth="275.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <GridPane.margin>
-                              <Insets left="15.0" top="10.0" />
-                           </GridPane.margin>
-                        </Label>
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.0" minWidth="10.0" prefWidth="342.0" />
@@ -209,7 +204,6 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="44.0" valignment="CENTER" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
                </top>

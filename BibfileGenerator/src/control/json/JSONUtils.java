@@ -1,6 +1,7 @@
 package control.json;
 
-import java.awt.image.RenderedImage;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -76,7 +77,7 @@ public class JSONUtils {
 		Long pages = null;
 		
 		URL url = null;
-		RenderedImage image = null;
+		BufferedImage image = null;
 		
 		JSONObject volumeInfo = (JSONObject) json.get("volumeInfo");
 		title = (String) volumeInfo.get("title");
@@ -127,7 +128,7 @@ public class JSONUtils {
 			image = ImageIO.read(url);
 		} catch (MalformedURLException | RuntimeException e) {
 			//No Image available. Do nothing
-			System.out.println("No image available");
+			System.out.println("No image available in book: " + title);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.image.RenderedImage;
+import java.awt.image.BufferedImage;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,5 +32,13 @@ public class Book {
 	private String month;
 	private String note;
 	private String key;	
-	private RenderedImage image;
+	private BufferedImage image;
+	
+	public String getAuthors(){
+		String re = "";
+		for (Author a : author) {
+			re += a.getNameFirstName() + " ";
+		}
+		return re;
+	}
 }

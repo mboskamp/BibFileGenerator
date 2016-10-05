@@ -147,6 +147,24 @@ public class ISBNUtils {
 	}
 
 	/**
+	 * Returns the formatted ISBN string.<br>
+	 * Example:<br>
+	 * ISBN10: 3866801920 -> 3-86680-192-0
+	 * ISBN13: 9783866801929 -> 978-3-86680-192-9
+	 * @param input
+	 * @return
+	 */
+	public static String formatISBN(String input){
+		input = cleanISBNString(input);
+		if(input.length() == 10){
+			return input.substring(0, 1) + "-" + input.substring(1, 6) + "-" + input.substring(6, 9) + "-" + input.substring(9);
+		}else if(input.length() == 13){
+			return input.substring(0, 3) + "-" + input.substring(3, 4) + "-" + input.substring(4, 9) + "-" + input.substring(9, 12) + "-" + input.substring(12);
+		}
+		return null;
+	}
+
+	/**
 	 * This method calculates the checksum for any given 9 digits based on the
 	 * rules for ISBN10 checksums.
 	 *
