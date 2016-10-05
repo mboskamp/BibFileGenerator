@@ -1,7 +1,13 @@
 package control.json;
 
+import java.awt.image.RenderedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -69,6 +75,9 @@ public class JSONUtils {
 
 		Long pages = null;
 		
+		URL url = null;
+		RenderedImage image = null;
+		
 		JSONObject volumeInfo = (JSONObject) json.get("volumeInfo");
 		title = (String) volumeInfo.get("title");
 		publisher = (String) volumeInfo.get("publisher");
@@ -107,8 +116,24 @@ public class JSONUtils {
 		}
 
 		pages = (Long) volumeInfo.get("pageCount");
-
-		Book book = new Book(authorsArray, title, publisher, year, isbn, null, pages, null, null, null);
+		
+		try {
+			JSONObject imageLinks = (JSONObject) volumeInfo.get("imageLinks");
+			String urlString = (String) imageLinks.get("thumbnail");
+			if(urlString == null){
+				urlString = (String) imageLinks.get("smallThumbnail");
+			}
+			url = new URL(urlString);
+			image = ImageIO.read(url);
+		} catch (MalformedURLException | RuntimeException e) {
+			//No Image available. Do nothing
+			System.out.println("No image available");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Book book = new Book(authorsArray, title, publisher, year, isbn, null, pages, null, null, null, image);
 
 		return book;
 	}

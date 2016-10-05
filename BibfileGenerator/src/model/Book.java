@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.image.RenderedImage;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,4 +32,5 @@ public class Book {
 	private String month;
 	private String note;
 	private String key;	
+	private RenderedImage image;
 }
