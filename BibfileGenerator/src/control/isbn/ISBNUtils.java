@@ -113,6 +113,7 @@ public class ISBNUtils {
 	 * @return
 	 */
 	public static String convertISBNType(String isbn) {
+		isbn = cleanISBNString(isbn);
 		if (isbn.length() == 10) {
 			isbn = isbn.substring(0, 9);
 			isbn = "978" + isbn;
@@ -122,7 +123,6 @@ public class ISBNUtils {
 			int check = calcCheckSum10(isbn);
 			isbn += check == 10 ? "X" : check;
 		}
-
 		return isbn;
 	}
 
