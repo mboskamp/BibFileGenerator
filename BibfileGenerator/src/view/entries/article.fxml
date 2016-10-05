@@ -12,7 +12,7 @@
          <content>
             <BorderPane maxHeight="350.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="350.0" prefWidth="587.0">
                <center>
-                  <HBox maxHeight="260.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="260.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+                  <HBox maxHeight="351.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="351.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                      <children>
                         <GridPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" prefWidth="286.0">
                            <children>
@@ -144,47 +144,6 @@
                      </BorderPane.margin>
                   </HBox>
                </center>
-               <top>
-                  <GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField fx:id="isbn" onKeyPressed="#validateISBN" prefHeight="37.0" prefWidth="275.0" promptText="ISBN">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets left="15.0" right="7.5" top="5.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Button fx:id="isbnSearchButton" mnemonicParsing="false" onAction="#searchISBN" prefHeight="31.0" prefWidth="101.0" text="Suche ISBN" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-                           <GridPane.margin>
-                              <Insets left="7.5" top="5.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <ImageView fitHeight="41.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                           <image>
-                              <Image url="@Achtung.jpg" />
-                           </image>
-                           <GridPane.margin>
-                              <Insets left="7.5" right="7.5" top="5.0" />
-                           </GridPane.margin>
-                        </ImageView>
-                        <Label fx:id="isbnError" prefHeight="0.0" prefWidth="275.0" text="Keine gültige ISBN! Überprüfe deine \n Angabe!" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <GridPane.margin>
-                              <Insets left="15.0" top="10.0" />
-                           </GridPane.margin>
-                        </Label>
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.0" minWidth="10.0" prefWidth="342.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="35.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="223.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="44.0" valignment="CENTER" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-               </top>
             </BorderPane>
          </content>
       </ScrollPane>
