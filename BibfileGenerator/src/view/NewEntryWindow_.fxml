@@ -103,7 +103,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" text="Abbrechen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
-                  <Button mnemonicParsing="false" text="Eintrag Hinzufügen" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#add" text="Eintrag Hinzufügen" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
                </children>
             </GridPane>
          </children>
