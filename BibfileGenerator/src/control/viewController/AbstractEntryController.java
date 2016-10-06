@@ -28,5 +28,6 @@ public abstract class AbstractEntryController {
 
 	// @FXML
 	// public abstract void finalize();
-
+	
+	public abstract void saveData();
 }

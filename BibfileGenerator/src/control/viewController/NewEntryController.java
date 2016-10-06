@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 public class NewEntryController {
 
+	private AbstractEntryController contentController;
+	
 	@FXML
 	private Button cancelButton;
 	
@@ -51,7 +53,12 @@ public class NewEntryController {
 		String entry = BibTeXEntry.getTypes().get(index).getValue();
 		try {
 			contentWrapper.getChildren().clear();
-			contentWrapper.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/view/entries/" + entry + ".fxml")));
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/entries/" + entry + ".fxml"));
+			contentWrapper.getChildren().add((Node) loader.load());
+			
+			contentController = loader.getController();
+			
 		} catch (IOException e) {
 			//TODO
 			e.printStackTrace();
@@ -61,7 +68,7 @@ public class NewEntryController {
 	@FXML
 	public void add(){
 		System.out.println("OK");
-		cancel(); //TODO remove and implement correct functionality
+		//cancel(); //TODO remove and implement correct functionality
 	}
 	
 	@FXML

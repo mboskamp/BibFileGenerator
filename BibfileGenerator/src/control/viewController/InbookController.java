@@ -37,4 +37,10 @@ public class InbookController extends AbstractISBNController {
 		// TODO Auto-generated method stub
 		super.initialize();
 	}
+
+	@Override
+	public void saveData() {
+		// TODO Auto-generated method stub
+		
+	}
 }

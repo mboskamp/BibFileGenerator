@@ -6,102 +6,192 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="465.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="250.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.BookController">
+<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="678.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.BookController">
    <center>
-      <ScrollPane maxHeight="391.0" maxWidth="590.0" minHeight="250.0" minWidth="590.0" prefHeight="391.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+      <ScrollPane maxHeight="674.0" maxWidth="590.0" minHeight="250.0" minWidth="590.0" prefHeight="674.0" prefWidth="590.0" BorderPane.alignment="CENTER">
          <content>
-            <BorderPane maxHeight="350.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="350.0" prefWidth="587.0">
+            <BorderPane maxHeight="626.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="626.0" prefWidth="587.0">
                <center>
-                  <HBox maxHeight="424.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="424.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+                  <HBox maxHeight="553.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="553.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                      <children>
                         <GridPane minHeight="300.0" prefHeight="375.0">
                            <children>
-                              <Label fx:id="authorLabel" text="Autor">
+                              <Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0" text="Autor">
                                  <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                                 <padding>
                                     <Insets left="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="titleLabel" minHeight="30.0" prefHeight="30.0" text="Titel" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="publisherLabel" minHeight="30.0" prefHeight="30.0" text="Herausgeber" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label fx:id="titleLabel" text="Titel" GridPane.rowIndex="2">
-                                 <GridPane.margin>
+                              <Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0" text="Jahr" GridPane.rowIndex="4">
+                                 <padding>
                                     <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label fx:id="publisherLabel" text="Herausgeber" GridPane.rowIndex="3">
+                              <Label fx:id="volumeLabel" minHeight="30.0" prefHeight="30.0" text="Band" GridPane.rowIndex="7">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
-                              </Label>
-                              <Label fx:id="yearLabel" text="Jahr" GridPane.rowIndex="4">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="volumeLabel" text="Band" GridPane.rowIndex="7">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="seriesLabel" text="Reihe" GridPane.rowIndex="9">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="addressLabel" text="Adresse" GridPane.rowIndex="10">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="editionLabel" text="Ausgabe" GridPane.rowIndex="11">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="monthLabel" text="Monat" GridPane.rowIndex="12">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="noteLabel" text="Notiz" GridPane.rowIndex="13">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="keyLabel" text="Schlüssel" GridPane.rowIndex="14">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <Separator prefWidth="200.0" GridPane.rowIndex="6" />
-                              <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                              <TextField fx:id="author" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" />
-                              <TextField fx:id="title" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="year" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField fx:id="publisher" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="volume" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <TextField fx:id="series" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                              <TextField fx:id="address" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                              <TextField fx:id="edition" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                              <TextField fx:id="month" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                              <TextField fx:id="key" minHeight="20.0" minWidth="190.0" prefHeight="50.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                              <TextField fx:id="note" minHeight="20.0" minWidth="190.0" prefHeight="50.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                              <Label fx:id="numberLabel" text="Nummer" GridPane.rowIndex="8">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="number" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <Label fx:id="editorLabel" text="Redakteur" GridPane.rowIndex="1">
                                  <GridPane.margin>
-                                    <Insets left="15.0" />
+                                    <Insets top="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField fx:id="editor" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="referenceKeyLabel" text="Referenz" GridPane.rowIndex="5">
+                              <Label fx:id="seriesLabel" minHeight="30.0" prefHeight="30.0" text="Reihe" GridPane.rowIndex="9">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="addressLabel" minHeight="30.0" prefHeight="30.0" text="Adresse" GridPane.rowIndex="10">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="editionLabel" minHeight="30.0" prefHeight="30.0" text="Ausgabe" GridPane.rowIndex="11">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0" text="Monat" GridPane.rowIndex="12">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0" text="Notiz" GridPane.rowIndex="13">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="keyLabel" minHeight="30.0" prefHeight="30.0" text="Schlüssel" GridPane.rowIndex="14">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Separator minHeight="30.0" prefHeight="30.0" prefWidth="200.0" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></Separator>
+                              <Separator minHeight="30.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></Separator>
+                              <TextField fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="publisher" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="volume" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="series" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="edition" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="key" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <Label fx:id="numberLabel" minHeight="30.0" prefHeight="30.0" text="Nummer" GridPane.rowIndex="8">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="number" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <Label fx:id="editorLabel" minHeight="30.0" prefHeight="30.0" text="Redakteur" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="referenceKey" minHeight="20.0" minWidth="190.0" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="editor" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
+                              <Label fx:id="referenceKeyLabel" minHeight="30.0" prefHeight="30.0" text="Referenz" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></TextField>
                            </children>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="101.0" />
@@ -129,15 +219,8 @@
                            </HBox.margin>
                         </GridPane>
                         <BorderPane prefHeight="260.0" prefWidth="224.0">
-                           <center>
-                              <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                                 <image>
-                                    <Image url="@../images/book_image.png" />
-                                 </image>
-                              </ImageView>
-                           </center>
                            <top>
-                              <GridPane BorderPane.alignment="CENTER">
+                              <GridPane minHeight="300.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <Label fx:id="isbn10Label" text="ISBN 10:">
                                        <GridPane.margin>
@@ -151,14 +234,20 @@
                                     </Label>
                                     <Label fx:id="isbn10" GridPane.columnIndex="1" />
                                     <Label fx:id="isbn13" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <image>
+                                          <Image url="@../images/book_image.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="62.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="138.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                               </GridPane>
                            </top>
@@ -175,7 +264,7 @@
                <top>
                   <GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="isbn" prefHeight="37.0" prefWidth="275.0" promptText="ISBN" text="3551354022">
+                        <TextField fx:id="isbn" prefHeight="40.0" prefWidth="275.0" promptText="ISBN" text="3551354022">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

@@ -39,8 +39,5 @@ public abstract class AbstractConferenceController extends AbstractPrintEntryCon
 	public TextField publisher;
 	
 	@Override
-	public void initialize() {
-		// TODO Auto-generated method stub
-		super.initialize();
-	}
+	public abstract void initialize();
 }

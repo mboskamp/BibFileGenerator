@@ -8,11 +8,7 @@ public abstract class AbstractPrintEntryController extends AbstractEntryControll
 	@FXML
 	public TextField author;
 	
-	/**
-	 * Should be overridden
-	 */
 	@Override
-	public void initialize() {
-	}
+	public abstract void initialize();
 
 }

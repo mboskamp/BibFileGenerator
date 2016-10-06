@@ -14,6 +14,11 @@ public class ManualController extends AbstractTechnicalDocumentController {
 	@Override
 	public void initialize() {
 		// TODO Auto-generated method stub
-		super.initialize();
+	}
+
+	@Override
+	public void saveData() {
+		// TODO Auto-generated method stub
+		
 	}
 }

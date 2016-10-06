@@ -15,8 +15,5 @@ public abstract class AbstractAcademicDocumentController extends AbstractPrintEn
 	public TextField address;
 	
 	@Override
-	public void initialize() {
-		// TODO Auto-generated method stub
-		super.initialize();
-	}
+	public abstract void initialize();
 }

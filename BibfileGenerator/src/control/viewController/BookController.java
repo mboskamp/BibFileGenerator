@@ -23,4 +23,13 @@ public class BookController extends AbstractISBNController {
 		// TODO Auto-generated method stub
 		super.initialize();
 	}
+	
+	public String hello(){
+		return "Hello";
+	}
+
+	@Override
+	public void saveData() {
+		System.out.println("save");
+	}
 }

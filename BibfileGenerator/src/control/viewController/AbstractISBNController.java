@@ -76,7 +76,6 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 	
 	@Override
 	public void initialize(){
-		super.initialize();
 		isbn10Label.setVisible(false);
 		isbn13Label.setVisible(false);
 		
