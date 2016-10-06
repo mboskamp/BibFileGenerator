@@ -68,6 +68,7 @@ public class NewEntryController {
 	@FXML
 	public void add(){
 		System.out.println("OK");
+		//
 		//cancel(); //TODO remove and implement correct functionality
 	}
 	
