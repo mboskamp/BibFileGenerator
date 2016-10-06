@@ -1,7 +1,6 @@
 package control.json;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -88,11 +87,12 @@ public class JSONUtils {
 		Iterator<?> authorIterator = authorsJSON.iterator();
 		while (authorIterator.hasNext()) {
 			String[] names = ((String) authorIterator.next()).split(" ");
-			String name = names[names.length - 1];
+			String name = names[names.length - 1].trim();
 			String firstName = "";
 			for (int i = 0; i < names.length - 1; i++) {
-				firstName += names[i];
+				firstName += names[i] + " ";
 			}
+			firstName = firstName.trim();
 			authorsList.add(new Author(name, firstName));
 		}
 		Author[] authorsArray = new Author[authorsList.size()];
