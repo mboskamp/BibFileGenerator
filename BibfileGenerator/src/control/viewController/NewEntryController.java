@@ -25,6 +25,9 @@ public class NewEntryController {
 	private Button cancelButton;
 	
 	@FXML
+	private Button addButton;
+	
+	@FXML
 	private ChoiceBox<Object> entryType;
 	
 	@FXML
@@ -68,7 +71,8 @@ public class NewEntryController {
 	@FXML
 	public void add(){
 		System.out.println("OK");
-		//
+		Stage stage = (Stage) addButton.getScene().getWindow();
+		stage.close();
 		//cancel(); //TODO remove and implement correct functionality
 	}
 	
