@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -12,9 +13,18 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Datei">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Neu" />
-                        <MenuItem mnemonicParsing="false" text="Öffnen" />
-                    <MenuItem mnemonicParsing="false" text="Schließen" />
+                        <MenuItem mnemonicParsing="false" text="Neu">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="N" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#open" text="Öffnen">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                           </accelerator></MenuItem>
+                    <MenuItem mnemonicParsing="false" text="Schließen">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                           </accelerator></MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" text="Speichern" />
                         <MenuItem mnemonicParsing="false" text="Speichern Unter..." />
@@ -53,14 +63,7 @@
         <tabs>
           <Tab text="BIB-File Name">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn maxWidth="1000.0" prefWidth="70.0" text="Nummer" />
-                      <TableColumn prefWidth="200.0" text="Titel" />
-                        <TableColumn maxWidth="3000.0" prefWidth="200.0" text="Autor" />
-                        <TableColumn maxWidth="1000.0" prefWidth="86.0" text="Jahr" />
-                        <TableColumn maxWidth="3000.0" prefWidth="195.0" text="ISBN" />
-                    </columns>
+                  <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
