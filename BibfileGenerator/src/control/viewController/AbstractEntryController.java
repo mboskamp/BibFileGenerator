@@ -1,10 +1,10 @@
 package control.viewController;
 
-import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
-public abstract class AbstractEntryController {
-
+public abstract class AbstractEntryController extends AbstractController{
+	
 	@FXML
 	public TextField title;
 	
@@ -29,5 +29,5 @@ public abstract class AbstractEntryController {
 	// @FXML
 	// public abstract void finalize();
 	
-	public abstract void saveData();
+	public abstract String saveData();
 }

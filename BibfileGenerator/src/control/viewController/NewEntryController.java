@@ -1,10 +1,11 @@
 package control.viewController;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jbibtex.BibTeXEntry;
+
+import control.viewController.MainWindowController;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,7 +18,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class NewEntryController {
+public class NewEntryController extends AbstractController{
 
 	private AbstractEntryController contentController;
 	
@@ -70,10 +71,12 @@ public class NewEntryController {
 	
 	@FXML
 	public void add(){
-		System.out.println("OK");
+		String key = contentController.saveData();
+		
+		((MainWindowController) from).notifyAdd(key);
+		
 		Stage stage = (Stage) addButton.getScene().getWindow();
 		stage.close();
-		//cancel(); //TODO remove and implement correct functionality
 	}
 	
 	@FXML

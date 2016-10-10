@@ -24,8 +24,8 @@ public class IncollectionController extends AbstractISBNController {
 	}
 
 	@Override
-	public void saveData() {
+	public String saveData() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 }

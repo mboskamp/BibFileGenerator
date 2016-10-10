@@ -20,8 +20,8 @@ public class TechreportController extends AbstractTechnicalDocumentController {
 	}
 
 	@Override
-	public void saveData() {
+	public String saveData() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 }

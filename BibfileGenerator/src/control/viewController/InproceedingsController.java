@@ -8,8 +8,8 @@ public class InproceedingsController extends AbstractConferenceController {
 	}
 
 	@Override
-	public void saveData() {
+	public String saveData() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 }
