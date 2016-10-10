@@ -62,7 +62,7 @@ public class BookController extends AbstractISBNController {
 		fields.put(noteKey, new StringValue(note.getText()));
 		fields.put(keyKey, new StringValue(key.getText()));
 		
-		BibTeXEntry book = new BibTeXEntry(new Key(""), new Key(referenceKey.getText()));
+		BibTeXEntry book = new BibTeXEntry(BibTeXEntry.TYPE_BOOK, new Key(referenceKey.getText()));
 		book.addAllFields(fields);
 		
 		String key = author.getText() + title.getText() + year.getText();

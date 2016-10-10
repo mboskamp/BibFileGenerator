@@ -26,8 +26,14 @@
                               <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="ANY" />
                            </accelerator></MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Speichern" />
-                        <MenuItem mnemonicParsing="false" text="Speichern Unter..." />
+                        <MenuItem mnemonicParsing="false" onAction="#save" text="Speichern">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                           </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Speichern Unter...">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="ANY" />
+                           </accelerator></MenuItem>
                         <MenuItem mnemonicParsing="false" text="Exportieren" />
                   </items>
                 </Menu>
@@ -63,11 +69,15 @@
         <tabs>
           <Tab text="BIB-File Name">
                <content>
-                  <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  <ScrollPane>
+                     <content>
+                        <TableView fx:id="table">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
                </content>
           </Tab>
         </tabs>
