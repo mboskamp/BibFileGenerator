@@ -91,26 +91,28 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 		
 		if(validISBN){
 			ISBN i = ISBNUtils.validateAndReturn(isbn.getText());
-			String json = NetUtils.fireRequest(i);
+			String json = NetUtils.fireISBNRequest(i);
 			ArrayList<Book> books = JSONUtils.parseJSONResponse(json);
-			Book b = books.get(0); //TODO selection
-			author.setText(b.getAuthors());
-			title.setText(b.getTitle());
-			publisher.setText(b.getPublisher());
-			year.setText(b.getYear());
-			//TODO volume
-			//TODO number
-			//TODO series
-			//TODO address
-			
-			if(b.getImage() != null){
-				image.setImage(SwingFXUtils.toFXImage(b.getImage(), null));
+			if(books != null && books.size() > 0){
+				Book b = books.get(0); //TODO selection
+				author.setText(b.getAuthors());
+				title.setText(b.getTitle());
+				publisher.setText(b.getPublisher());
+				year.setText(b.getYear());
+				//TODO volume
+				//TODO number
+				//TODO series
+				//TODO address
+				
+				if(b.getImage() != null){
+					image.setImage(SwingFXUtils.toFXImage(b.getImage(), null));
+				}
+				
+				isbn10Label.setVisible(true);
+				isbn13Label.setVisible(true);
+				isbn10.setText(ISBNUtils.formatISBN(i.getIsbn10()));
+				isbn13.setText(ISBNUtils.formatISBN(i.getIsbn13()));				
 			}
-			
-			isbn10Label.setVisible(true);
-			isbn13Label.setVisible(true);
-			isbn10.setText(ISBNUtils.formatISBN(i.getIsbn10()));
-			isbn13.setText(ISBNUtils.formatISBN(i.getIsbn13()));
 		}else{
 			isbnError.setText(ISBN_ERROR);
 		}
