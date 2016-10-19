@@ -40,10 +40,13 @@ public class JSONUtils {
 			JSONObject jsonObj = (JSONObject) obj;
 
 			JSONArray items = (JSONArray) jsonObj.get("items");
-
-			Iterator<?> iterator = items.iterator();
-			while (iterator.hasNext()) {
-				books.add(parseItem((JSONObject) iterator.next()));
+			if(items != null){
+				Iterator<?> iterator = items.iterator();
+				while (iterator.hasNext()) {
+					books.add(parseItem((JSONObject) iterator.next()));
+				}				
+			}else{
+				System.out.println("ISBN not found");
 			}
 
 		} catch (ParseException e) {
