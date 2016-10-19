@@ -112,6 +112,7 @@ public class MainWindowController extends AbstractController {
 		}
 	}
 
+	//TODO use BibUtils
 	public void save() {
 		System.out.println(path == null ? "null" : path);
 		if(path != null){
