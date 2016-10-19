@@ -17,10 +17,15 @@ import org.json.simple.parser.ParseException;
 import control.isbn.ISBNUtils;
 import model.Author;
 import model.Book;
+import model.doi.DOI;
 import model.isbn.ISBN;
 
 public class JSONUtils {
 
+	public static ArrayList<DOI> parseJSONDOIResponse(){
+		return null;
+	}
+	
 	/**
 	 * Parses the JSON input and extracts the necessary book data. All found
 	 * books are added to an ArrayList which will be returned.
@@ -30,7 +35,7 @@ public class JSONUtils {
 	 * @return An ArrayList of {@link Book Books} or <code>Null</code> if no
 	 *         book was found.
 	 */
-	public static ArrayList<Book> parseJSONResponse(String json) {
+	public static ArrayList<Book> parseJSONBookResponse(String json) {
 		JSONParser parser = new JSONParser();
 		ArrayList<Book> books = new ArrayList<>();
 

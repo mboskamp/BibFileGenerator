@@ -92,7 +92,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 		if(validISBN){
 			ISBN i = ISBNUtils.validateAndReturn(isbn.getText());
 			String json = NetUtils.fireISBNRequest(i);
-			ArrayList<Book> books = JSONUtils.parseJSONResponse(json);
+			ArrayList<Book> books = JSONUtils.parseJSONBookResponse(json);
 			if(books != null && books.size() > 0){
 				Book b = books.get(0); //TODO selection
 				author.setText(b.getAuthors());
