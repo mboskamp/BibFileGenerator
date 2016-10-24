@@ -78,21 +78,26 @@ public class ISBN {
 
 	/**
 	 * Returns the ISBN String matching the given {@link ISBNType}.
-	 * @param type The {@link ISBNType} to return
-	 * @param formatted <code>true</code> for formatted Strings and <code>false</code> for unformatted Strings
-	 * @return The either formatted or unformatted ISBN String matching the given {@link ISBNType} 
+	 * 
+	 * @param type
+	 *            The {@link ISBNType} to return
+	 * @param formatted
+	 *            <code>true</code> for formatted Strings and <code>false</code>
+	 *            for unformatted Strings
+	 * @return The either formatted or unformatted ISBN String matching the
+	 *         given {@link ISBNType}
 	 */
-	public String toString(ISBNType type, boolean formatted){
-		if(formatted){
-			if(type == ISBNType.ISBN10){
+	public String toString(ISBNType type, boolean formatted) {
+		if (formatted) {
+			if (type == ISBNType.ISBN10) {
 				return formatISBN10();
-			}else if(type == ISBNType.ISBN13){
+			} else if (type == ISBNType.ISBN13) {
 				return formatISBN13();
 			}
-		}else{
-			if(type == ISBNType.ISBN10){
+		} else {
+			if (type == ISBNType.ISBN10) {
 				return isbn10;
-			}else if(type == ISBNType.ISBN13){
+			} else if (type == ISBNType.ISBN13) {
 				return isbn13;
 			}
 		}

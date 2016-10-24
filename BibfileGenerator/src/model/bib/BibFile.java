@@ -1,6 +1,7 @@
 package model.bib;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,26 +32,43 @@ public class BibFile {
 	}
 
 	/**
-	 * Shortcut for <code>{@link #getDatabase()}.{@link BibTeXDatabase#addObject(BibTeXObject)}</code>
-	 * Adds the given {@link BibTeXEntry} to the {@link BibTeXDatabase} if it is not already in there.
+	 * Shortcut for
+	 * <code>{@link #getDatabase()}.{@link BibTeXDatabase#addObject(BibTeXObject)}</code>
+	 * Adds the given {@link BibTeXEntry} to the {@link BibTeXDatabase} if it is
+	 * not already in there.
+	 * 
 	 * @see BibTeXDatabase#addObject(BibTeXObject)
-	 * @param entry The {@link BibTeXEntry} that will be added to the {@link BibTeXDatabase}
+	 * @param entry
+	 *            The {@link BibTeXEntry} that will be added to the
+	 *            {@link BibTeXDatabase}
 	 */
-	public void add(BibTeXEntry entry){
+	public void add(BibTeXEntry entry) {
 		database.addObject(entry);
 	}
-	
+
 	/**
-	 * Shortcut for <code>{@link #getDatabase()}.{@link BibTeXDatabase#removeObject(BibTeXObject)}</code>
-	 * Removes the given {@link BibTeXEntry} from the {@link BibTeXDatabase} if it exists.
+	 * Shortcut for
+	 * <code>{@link #getDatabase()}.{@link BibTeXDatabase#removeObject(BibTeXObject)}</code>
+	 * Removes the given {@link BibTeXEntry} from the {@link BibTeXDatabase} if
+	 * it exists.
+	 * 
 	 * @see BibTeXDatabase#addObject(BibTeXObject)
-	 * @param entry The {@link BibTeXEntry} that will be removed from the {@link BibTeXDatabase}
+	 * @param entry
+	 *            The {@link BibTeXEntry} that will be removed from the
+	 *            {@link BibTeXDatabase}
 	 */
-	public void remove(BibTeXEntry entry){
+	public void remove(BibTeXEntry entry) {
 		database.removeObject(entry);
 	}
-	
+
 	// TODO Testing
+	/**
+	 * EXPERIMENTAL<br>
+	 * Exports the BibFile as a file that will be stored under the given path.
+	 * 
+	 * @param path
+	 *            The path where the file will be stored.
+	 */
 	public void exportFile(String path) {
 
 		BufferedWriter writer;
@@ -65,6 +83,12 @@ public class BibFile {
 	}
 
 	// TODO Testing
+	/**
+	 * EXPERIMENTAL
+	 * Exports the BibFile as String.
+	 * 
+	 * @return The string representation of this BibFile.
+	 */
 	public String exportString() {
 		StringWriter writer = new StringWriter();
 		try {
@@ -87,7 +111,7 @@ public class BibFile {
 	public boolean isEmpty() {
 		return database.getObjects().size() == 0 ? false : true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return exportString();

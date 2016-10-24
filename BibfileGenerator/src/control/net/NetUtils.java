@@ -22,7 +22,7 @@ import model.isbn.ISBN;
 public class NetUtils {
 
 	public static String ERROR = "error";
-	
+
 	/**
 	 * This method checks, if the runtime device has Internet access, by firing
 	 * a request to the google DNS server.
@@ -49,6 +49,7 @@ public class NetUtils {
 	 * 
 	 * @param isbn
 	 *            the ISBN number to lookup in the database.
+	 * @return The JSON response string
 	 */
 	public static String fireISBNRequest(ISBN isbn) {
 		String url = "https://www.googleapis.com/books/v1/volumes";
@@ -70,8 +71,16 @@ public class NetUtils {
 		}
 		return ERROR;
 	}
-	
-	public static String fireDOIRequest(DOI doi){
+
+	/**
+	 * Fires a request to the DOI database. Returns the returned JSON structure
+	 * as a string.
+	 * 
+	 * @param doi
+	 *            The DOI to lookup in the database.
+	 * @return the JSON response string
+	 */
+	public static String fireDOIRequest(DOI doi) {
 		String url = "http://api.crossref.org/works/" + doi.toString();
 		try {
 			return fireRequest(new URL(url));
@@ -85,17 +94,18 @@ public class NetUtils {
 	/**
 	 * Fires a request to the given {@link URL} and returns the response body.
 	 * 
-	 * @param url The {@link URL} that will be requested
+	 * @param url
+	 *            The {@link URL} that will be requested
 	 * @return The response body
 	 */
-	private static String fireRequest(URL url){
+	private static String fireRequest(URL url) {
 		try {
 			Charset charset = StandardCharsets.UTF_8;
 			URLConnection connection;
 			connection = url.openConnection();
 			connection.setRequestProperty("Accept-Charset", charset.toString());
 			InputStream response = connection.getInputStream();
-			
+
 			Scanner scanner = new Scanner(response);
 			String responseBody = scanner.useDelimiter("\\A").next();
 			scanner.close();

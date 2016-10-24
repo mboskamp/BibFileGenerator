@@ -4,6 +4,13 @@ import control.doi.DOIFactory;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This class represents a Digital Object Identifier. It is mostly used to
+ * reference scientific articles or proceedings.
+ * 
+ * @author Miklas
+ *
+ */
 public class DOI {
 
 	private final int PREFIX = 10;
@@ -15,9 +22,11 @@ public class DOI {
 	private String identifier;
 
 	/**
-	 * Do not use. Use {@link DOIFactory#create(String)} instead as it validates the input.
+	 * Do not use. Use {@link DOIFactory#create(String)} instead as it validates
+	 * the input.
 	 */
-	public DOI() {}
+	public DOI() {
+	}
 
 	@Override
 	public String toString() {
