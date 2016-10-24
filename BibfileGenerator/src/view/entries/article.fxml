@@ -115,7 +115,7 @@
                               <Insets top="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="volumeLabel" minHeight="30.0" prefHeight="30.0" text="Band" GridPane.rowIndex="4">
+                        <Label fx:id="volumeLabel" minHeight="30.0" prefHeight="30.0" text="Ausgabe" GridPane.rowIndex="4">
                            <padding>
                               <Insets left="15.0" />
                            </padding>
