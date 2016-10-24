@@ -42,7 +42,7 @@
                               <Insets top="5.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="publisher" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="journal" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>

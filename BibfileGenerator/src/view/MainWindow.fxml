@@ -13,7 +13,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Datei">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Neu">
+                        <MenuItem disable="true" mnemonicParsing="false" text="Neu">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="N" control="ANY" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
@@ -21,7 +21,7 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="ANY" />
                            </accelerator></MenuItem>
-                    <MenuItem mnemonicParsing="false" text="Schließen">
+                    <MenuItem disable="true" mnemonicParsing="false" text="Schließen">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="ANY" />
                            </accelerator></MenuItem>
@@ -34,18 +34,18 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="ANY" />
                            </accelerator></MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Exportieren" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Exportieren" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Bearbeiten">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Hinzufügen" />
-                    <MenuItem mnemonicParsing="false" text="Löschen" />
+                        <MenuItem mnemonicParsing="false" onAction="#add" text="Hinzufügen" />
+                    <MenuItem disable="true" mnemonicParsing="false" text="Löschen" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Über" />
+                    <MenuItem disable="true" mnemonicParsing="false" text="Über" />
                   </items>
                 </Menu>
               </menus>
@@ -54,11 +54,11 @@
          <center>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="Save" />
-                  <Button mnemonicParsing="false" text="Load" />
-                  <Button mnemonicParsing="false" text="Export" />
+                <Button mnemonicParsing="false" onAction="#save" text="Save" />
+                  <Button disable="true" mnemonicParsing="false" onAction="#open" text="Load" />
+                  <Button disable="true" mnemonicParsing="false" text="Export" />
                   <Button mnemonicParsing="false" onAction="#add" text="+" />
-                  <Button mnemonicParsing="false" text="-" />
+                  <Button disable="true" mnemonicParsing="false" text="-" />
               </items>
             </ToolBar>
          </center>
@@ -101,12 +101,12 @@
             <Label text="Autor: " GridPane.halignment="RIGHT" />
             <Label text="Titel: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <Label text="ISBN: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="3" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField disable="true" GridPane.columnIndex="1" />
+            <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField disable="true" GridPane.columnIndex="3" />
+            <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Jahr: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
             <Label text="Verlag: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <Label text="Auflage: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />

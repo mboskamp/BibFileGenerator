@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jbibtex.BibTeXEntry;
-import org.jbibtex.Entry;
 
 import control.viewController.MainWindowController;
 
@@ -88,6 +87,8 @@ public class NewEntryController extends AbstractController {
 		} catch (IOException e) {
 			// TODO
 			e.printStackTrace();
+		} catch (IllegalStateException ise){
+			System.out.println("Not implemented yet");
 		}
 	}
 
