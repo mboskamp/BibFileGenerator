@@ -1,8 +1,15 @@
 package control.viewController;
 
+import org.jbibtex.BibTeXEntry;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller that handles the input of user data about an {@link BibTeXEntry#TYPE_ARTICLE article}.
+ * 
+ * @author Miklas Boskamp
+ */
 public class ArticleController extends AbstractPrintEntryController {
 
 	@FXML
