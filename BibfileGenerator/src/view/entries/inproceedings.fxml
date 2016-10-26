@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="678.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.ConferenceController">
+<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="678.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.InproceedingsController">
    <center>
       <ScrollPane maxHeight="674.0" maxWidth="590.0" minHeight="250.0" minWidth="590.0" prefHeight="674.0" prefWidth="590.0" BorderPane.alignment="CENTER">
          <content>
