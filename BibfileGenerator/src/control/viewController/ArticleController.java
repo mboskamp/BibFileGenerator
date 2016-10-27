@@ -63,11 +63,11 @@ public class ArticleController extends AbstractPrintEntryController {
 		fields.put(noteKey, new StringValue(note.getText()));
 		fields.put(keyKey, new StringValue(key.getText()));
 
-		BibTeXEntry book = new BibTeXEntry(BibTeXEntry.TYPE_BOOK, new Key(referenceKey.getText()));
-		book.addAllFields(fields);
+		BibTeXEntry article = new BibTeXEntry(BibTeXEntry.TYPE_ARTICLE, new Key(referenceKey.getText()));
+		article.addAllFields(fields);
 
 		String key = author.getText() + title.getText() + year.getText();
-		GlobalStorage.getInstance().persist(key, book);
+		GlobalStorage.getInstance().persist(key, article);
 		return key;
 	}
 }
