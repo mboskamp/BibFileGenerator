@@ -42,7 +42,6 @@ public class MainWindowController extends AbstractController {
 	private String path;
 
 	private ArrayList<Entry> entries = new ArrayList<>();
-	private ArrayList<TableColumn<Entry, String>> columns = new ArrayList<>();
 	private BibTeXDatabase db = new BibTeXDatabase();
 
 	@FXML
@@ -53,6 +52,19 @@ public class MainWindowController extends AbstractController {
 	 */
 	@FXML
 	public void initialize() {
+		
+//		ArrayList<String> columns = new ArrayList<String>();
+//		columns.add(BibTeXEntry.KEY_TITLE.toString());
+//		columns.add(BibTeXEntry.KEY_AUTHOR.toString());
+//		columns.add(BibTeXEntry.KEY_YEAR.toString());
+////		columns.add(BibTeXEntry.KEY_KEY.toString());
+//		for (String string : columns) {
+//			TableColumn<Entry, String> column = new TableColumn<Entry, String>();
+//			column.setText(string);
+//			column.setCellValueFactory(new PropertyValueFactory<Entry, String>(string));
+//			table.getColumns().add(column);
+//		}
+		
 
 		for (String s : BibTeXEntry.getKeysAsString()) {
 			TableColumn<Entry, String> column = new TableColumn<Entry, String>();

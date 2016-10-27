@@ -83,6 +83,7 @@ public class JSONUtils {
 			e.printStackTrace();
 		}
 		
+		//TODO new DOI
 		return null;
 	}
 
@@ -203,6 +204,7 @@ public class JSONUtils {
 			e.printStackTrace();
 		}
 
+		//TODO Umstellung auf BibTeXEntry
 		Book book = new Book(authorsArray, title, publisher, year, isbn, null, pages, null, null, null, image);
 
 		return book;
