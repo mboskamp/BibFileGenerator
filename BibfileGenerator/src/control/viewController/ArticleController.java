@@ -10,7 +10,6 @@ import org.jbibtex.Value;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.GlobalStorage;
 
 /**
  * Controller that handles the input of user data about an
@@ -50,7 +49,7 @@ public class ArticleController extends AbstractPrintEntryController {
 	}
 
 	@Override
-	public String saveData() {
+	public BibTeXEntry saveData() {
 		Map<Key, Value> fields = new HashMap<Key, Value>();
 		fields.put(authorKey, new StringValue(author.getText()));
 		fields.put(journalKey, new StringValue(journal.getText()));
@@ -63,11 +62,9 @@ public class ArticleController extends AbstractPrintEntryController {
 		fields.put(noteKey, new StringValue(note.getText()));
 		fields.put(keyKey, new StringValue(key.getText()));
 
-		BibTeXEntry article = new BibTeXEntry(BibTeXEntry.TYPE_ARTICLE, new Key(referenceKey.getText()));
-		article.addAllFields(fields);
 
-		String key = author.getText() + title.getText() + year.getText();
-		GlobalStorage.getInstance().persist(key, article);
-		return key;
+		BibTeXEntry article = new BibTeXEntry(BibTeXEntry.TYPE_BOOK, new Key(referenceKey.getText()));
+		article.addAllFields(fields);
+		return article;
 	}
 }

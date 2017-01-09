@@ -30,7 +30,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
-import model.GlobalStorage;
 
 /**
  * Controller that handles the main view window.
@@ -105,8 +104,7 @@ public class MainWindowController extends AbstractController {
 	 * 
 	 * @param key
 	 */
-	public void notifyAdd(String key) {
-		BibTeXEntry entry = (BibTeXEntry) GlobalStorage.getInstance().get(key);
+	public void notifyAdd(BibTeXEntry entry) {
 		db.addObject(entry);
 		Entry e = entry.getEntry();
 		this.entries.add(e);

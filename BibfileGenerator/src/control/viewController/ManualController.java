@@ -24,7 +24,7 @@ public class ManualController extends AbstractTechnicalDocumentController {
 	}
 
 	@Override
-	public String saveData() {
+	public BibTeXEntry saveData() {
 		// TODO Auto-generated method stub
 		return null;
 	}

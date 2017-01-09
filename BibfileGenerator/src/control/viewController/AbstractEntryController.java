@@ -1,8 +1,9 @@
 package control.viewController;
 
+import org.jbibtex.BibTeXEntry;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.GlobalStorage;
 
 /**
  * Abstract superclass for any view controller that is used to gather
@@ -40,5 +41,5 @@ public abstract class AbstractEntryController extends AbstractController {
 	 * Called when the user hits the 'add' button in the NewEntryView.
 	 * @return The reference key to retrieve the saved entry from {@link GlobalStorage}.
 	 */
-	public abstract String saveData();
+	public abstract BibTeXEntry saveData();
 }

@@ -9,8 +9,8 @@ import org.jbibtex.StringValue;
 import org.jbibtex.Value;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import model.GlobalStorage;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_BOOK book}.
@@ -52,7 +52,7 @@ public class BookController extends AbstractISBNController {
 	}
 
 	@Override
-	public String saveData() {
+	public BibTeXEntry saveData() {
 		Map<Key, Value> fields = new HashMap<Key, Value>();
 		fields.put(authorKey, new StringValue(author.getText()));
 		fields.put(editorKey, new StringValue(editor.getText()));
@@ -69,9 +69,6 @@ public class BookController extends AbstractISBNController {
 		
 		BibTeXEntry book = new BibTeXEntry(BibTeXEntry.TYPE_BOOK, new Key(referenceKey.getText()));
 		book.addAllFields(fields);
-		
-		String key = author.getText() + title.getText() + year.getText();
-		GlobalStorage.getInstance().persist(key, book);
-		return key;
+		return book;
 	}
 }

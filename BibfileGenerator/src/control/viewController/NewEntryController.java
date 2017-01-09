@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.GlobalStorage;
 
 /**
  * Controller that handles the input of user data about a new entry of any
@@ -100,9 +99,9 @@ public class NewEntryController extends AbstractController {
 	 */
 	@FXML
 	public void add() {
-		String key = contentController.saveData();
+		BibTeXEntry entry = contentController.saveData();
 
-		((MainWindowController) from).notifyAdd(key);
+		((MainWindowController) from).notifyAdd(entry);
 
 		Stage stage = (Stage) addButton.getScene().getWindow();
 		stage.close();
