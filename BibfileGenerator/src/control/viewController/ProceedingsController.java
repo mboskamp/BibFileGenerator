@@ -1,6 +1,7 @@
 package control.viewController;
 
 import org.jbibtex.BibTeXEntry;
+import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -45,8 +46,7 @@ public class ProceedingsController extends AbstractEntryController {
 	}
 
 	@Override
-	public BibTeXEntry saveData() {
-		// TODO Auto-generated method stub
-		return null;
+	public Key getEntryType() {
+		return BibTeXEntry.TYPE_PROCEEDINGS;
 	}
 }

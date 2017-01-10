@@ -1,6 +1,7 @@
 package control.viewController;
 
 import org.jbibtex.BibTeXEntry;
+import org.jbibtex.Key;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_MASTERSTHESIS mastersthesis}.
@@ -15,8 +16,7 @@ public class MastersthesisController extends AbstractAcademicDocumentController 
 	}
 
 	@Override
-	public BibTeXEntry saveData() {
-		// TODO Auto-generated method stub
-		return null;
+	public Key getEntryType() {
+		return BibTeXEntry.TYPE_MASTERSTHESIS;
 	}
 }

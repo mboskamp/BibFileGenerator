@@ -1,6 +1,7 @@
 package control.viewController;
 
 import org.jbibtex.BibTeXEntry;
+import org.jbibtex.Key;
 
 /**
  * Controller that handles the input of user data about an {@link BibTeXEntry#TYPE_UNPUBLISHED unpublished} entry.
@@ -15,8 +16,7 @@ public class UnpublishedController extends AbstractPrintEntryController {
 	}
 
 	@Override
-	public BibTeXEntry saveData() {
-		// TODO Auto-generated method stub
-		return null;
+	public Key getEntryType() {
+		return BibTeXEntry.TYPE_UNPUBLISHED;
 	}
 }
