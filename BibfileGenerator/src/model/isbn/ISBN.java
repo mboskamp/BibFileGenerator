@@ -1,6 +1,5 @@
 package model.isbn;
 
-import control.isbn.ISBNFactory;
 import control.isbn.ISBNUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,15 +20,15 @@ public class ISBN {
 	private String isbn13;
 
 	/**
-	 * Should not be called directly. Use {@link ISBNFactory} to create ISBN
-	 * objects.
+	 * Object that represents an ISBN number. The given input String will be
+	 * checked for correct formatting before object creation.
 	 * 
 	 * @param isbn
 	 *            The ISBN string
 	 */
 	public ISBN(String isbn) {
-		if (isbn.length() != 10 || isbn.length() != 13) {
-			isbn = ISBNUtils.cleanISBNString(isbn);
+		if (!ISBNUtils.validateISBN(isbn)) {
+			throw new RuntimeException("Invalid ISBN");
 		}
 		if (isbn.length() == 10) {
 			isbn10 = isbn;
@@ -38,7 +37,7 @@ public class ISBN {
 			isbn13 = isbn;
 			isbn10 = ISBNUtils.convertISBNType(isbn);
 		} else {
-			throw new RuntimeException("Invalid ISBN length");
+			throw new RuntimeException("Unknown error while checking ISBN length");
 		}
 	}
 
