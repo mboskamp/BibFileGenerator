@@ -63,10 +63,12 @@ public class NetUtils {
 			query = String.format(paramName + "=%s:%s", URLEncoder.encode(param, charset.toString()), isbn.toString());
 			return fireRequest(new URL(url + "?" + query));
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
+			//Should not occur as the encoding is set to UTF-8
+			// TODO Show error dialog
 			e1.printStackTrace();
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			//Invalid URL
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 		return ERROR;
@@ -85,7 +87,7 @@ public class NetUtils {
 		try {
 			return fireRequest(new URL(url));
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 		return ERROR;
@@ -111,7 +113,8 @@ public class NetUtils {
 			scanner.close();
 			return responseBody;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			//Could not open connection.
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 		return ERROR;

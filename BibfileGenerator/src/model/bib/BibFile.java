@@ -76,7 +76,8 @@ public class BibFile {
 			formatter.format(database, writer);
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 		} catch (IOException e) {
-			// TODO Error while exporting
+			//Error while exporting
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 	}
@@ -93,7 +94,8 @@ public class BibFile {
 		try {
 			formatter.format(database, writer);
 		} catch (IOException e) {
-			// TODO Error while exporting
+			//Error while exporting
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 		return writer.toString();

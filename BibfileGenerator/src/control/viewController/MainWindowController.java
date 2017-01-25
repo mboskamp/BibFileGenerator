@@ -51,20 +51,6 @@ public class MainWindowController extends AbstractController {
 	 */
 	@FXML
 	public void initialize() {
-		
-//		ArrayList<String> columns = new ArrayList<String>();
-//		columns.add(BibTeXEntry.KEY_TITLE.toString());
-//		columns.add(BibTeXEntry.KEY_AUTHOR.toString());
-//		columns.add(BibTeXEntry.KEY_YEAR.toString());
-////		columns.add(BibTeXEntry.KEY_KEY.toString());
-//		for (String string : columns) {
-//			TableColumn<Entry, String> column = new TableColumn<Entry, String>();
-//			column.setText(string);
-//			column.setCellValueFactory(new PropertyValueFactory<Entry, String>(string));
-//			table.getColumns().add(column);
-//		}
-		
-
 		for (String s : BibTeXEntry.getKeysAsString()) {
 			TableColumn<Entry, String> column = new TableColumn<Entry, String>();
 			column.setText(s);
@@ -140,8 +126,19 @@ public class MainWindowController extends AbstractController {
 
 			updateColumns();
 			updateTable();
-		} catch (TokenMgrException | ParseException | ObjectResolutionException | FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (TokenMgrException e) {
+			// TODO Show error dialog
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// File could not be parsed correctly.
+			//TODO Show error dialog
+			e.printStackTrace();
+		} catch (ObjectResolutionException e) {
+			// TODO Show error dialog
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			//File could not be found. Should not occur as all files are opened via FileChooser.
+			// TODO Show error dialog
 			e.printStackTrace();
 		}
 	}
@@ -159,7 +156,8 @@ public class MainWindowController extends AbstractController {
 			try {
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				//Could not format file.
+				// TODO Show error dialog
 				e.printStackTrace();
 			}
 		} else {

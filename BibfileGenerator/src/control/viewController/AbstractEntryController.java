@@ -97,7 +97,7 @@ public abstract class AbstractEntryController extends AbstractController {
 					try {
 						values.put(key, new StringValue(((TextField) field.get(this)).getText()));
 					} catch (IllegalArgumentException | IllegalAccessException e) {
-						//TODO
+						//TODO Show error dialog
 						e.printStackTrace();
 					} catch (Exception e) {
 						//TODO Remove after all fields are implemented

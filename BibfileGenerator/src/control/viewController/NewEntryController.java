@@ -83,11 +83,12 @@ public class NewEntryController extends AbstractController {
 
 			contentController = loader.getController();
 
-		} catch (IOException e) {
-			// TODO
-			e.printStackTrace();
 		} catch (IllegalStateException ise){
 			System.out.println("Not implemented yet");
+		} catch (IOException e) {
+			//Could not load view
+			// TODO Show error dialog
+			e.printStackTrace();
 		}
 	}
 

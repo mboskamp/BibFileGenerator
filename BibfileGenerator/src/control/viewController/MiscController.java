@@ -18,7 +18,7 @@ public class MiscController extends AbstractPrintEntryController {
 	
 	@Override
 	public void initialize() {
-		// TODO Auto-generated method stub
+		// Do nothing
 	}
 
 	@Override

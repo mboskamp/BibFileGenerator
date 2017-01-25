@@ -79,7 +79,7 @@ public class JSONUtils {
 			DOI doi = DOIFactory.getInstance().create(doiString);
 			doi.toString();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			// TODO show error dialog
 			e.printStackTrace();
 		}
 		
@@ -119,7 +119,9 @@ public class JSONUtils {
 			if (books.size() != 0) {
 				return books;
 			} else {
-				// TODO: Error parsing JSON
+				//Error parsing JSON
+				// TODO: Show error dialog
+				e.printStackTrace();
 				return null;
 			}
 		}
@@ -200,8 +202,7 @@ public class JSONUtils {
 			// No Image available. Do nothing
 			System.out.println("No image available in book: " + title);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Invalid image. No image available. Do nothing
 		}
 
 		//TODO Umstellung auf BibTeXEntry

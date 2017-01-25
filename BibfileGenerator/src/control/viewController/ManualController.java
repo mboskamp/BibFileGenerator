@@ -21,7 +21,7 @@ public class ManualController extends AbstractTechnicalDocumentController {
 	
 	@Override
 	public void initialize() {
-		// TODO Auto-generated method stub
+		// Do nothing
 	}
 
 	@Override
