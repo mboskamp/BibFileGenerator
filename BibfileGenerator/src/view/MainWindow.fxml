@@ -58,7 +58,7 @@
                   <Button disable="true" mnemonicParsing="false" onAction="#open" text="Load" />
                   <Button disable="true" mnemonicParsing="false" text="Export" />
                   <Button mnemonicParsing="false" onAction="#add" text="+" />
-                  <Button disable="true" mnemonicParsing="false" text="-" />
+                  <Button fx:id="removeBtn" disable="true" mnemonicParsing="false" onAction="#remove" text="-" />
               </items>
             </ToolBar>
          </center>
@@ -84,33 +84,6 @@
       </TabPane>
    </center>
    <bottom>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Autor: " GridPane.halignment="RIGHT" />
-            <Label text="Titel: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <Label text="ISBN: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <TextField disable="true" GridPane.columnIndex="1" />
-            <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField disable="true" GridPane.columnIndex="3" />
-            <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label text="Jahr: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
-            <Label text="Verlag: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <Label text="Auflage: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

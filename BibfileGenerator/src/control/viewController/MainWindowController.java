@@ -24,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -46,6 +47,9 @@ public class MainWindowController extends AbstractController {
 	@FXML
 	public TableView<Entry> table;
 
+	@FXML
+	public Button removeBtn;
+
 	/**
 	 * Called when view is initialized.
 	 */
@@ -57,6 +61,13 @@ public class MainWindowController extends AbstractController {
 			column.setCellValueFactory(new PropertyValueFactory<Entry, String>(s));
 			table.getColumns().add(column);
 		}
+
+		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (newSelection != null) {
+				System.out.println("New Selection: " + newSelection.getTitle());
+			}
+			removeBtn.setDisable(false);
+		});
 	}
 
 	/**
@@ -82,6 +93,16 @@ public class MainWindowController extends AbstractController {
 		}
 	}
 
+	public void remove() {
+		System.out.println("Removed: " + table.getSelectionModel().getSelectedItem().getTitle() + " at index "
+				+ table.getSelectionModel().selectedIndexProperty().intValue());
+		entries.remove(table.getSelectionModel().selectedIndexProperty().intValue());
+		updateTable();
+		if (table.getSelectionModel().getSelectedItem() == null){
+			removeBtn.setDisable(true);
+		}
+	}
+
 	/**
 	 * Is called by the {@link NewEntryController}. If called new data is stored
 	 * in {@link GlobalStorage} and can now be accessed via the given string
@@ -94,8 +115,6 @@ public class MainWindowController extends AbstractController {
 		db.addObject(entry);
 		Entry e = entry.getEntry();
 		this.entries.add(e);
-
-		updateColumns();
 
 		updateTable();
 	}
@@ -131,13 +150,14 @@ public class MainWindowController extends AbstractController {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			// File could not be parsed correctly.
-			//TODO Show error dialog
+			// TODO Show error dialog
 			e.printStackTrace();
 		} catch (ObjectResolutionException e) {
 			// TODO Show error dialog
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			//File could not be found. Should not occur as all files are opened via FileChooser.
+			// File could not be found. Should not occur as all files are opened
+			// via FileChooser.
 			// TODO Show error dialog
 			e.printStackTrace();
 		}
@@ -156,7 +176,7 @@ public class MainWindowController extends AbstractController {
 			try {
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
-				//Could not format file.
+				// Could not format file.
 				// TODO Show error dialog
 				e.printStackTrace();
 			}
@@ -192,22 +212,6 @@ public class MainWindowController extends AbstractController {
 	}
 
 	private void updateColumns() {
-		// table.getColumns().clear();
-		// for (Entry entry : entries) {
-		// if(entry != null){
-		// for (Value value : entry.getValues()) {
-		// if(value != null){
-		// TableColumn<Entry, String> column = new TableColumn<Entry, String>();
-		// column.setText(entry.);
-		// column.setCellValueFactory(
-		// new PropertyValueFactory<Entry,String>(value.toUserString())
-		// );
-		// table.getColumns().add(column);
-		// }
-		// }
-		//
-		// }
-		// }
 	}
 
 	/**
