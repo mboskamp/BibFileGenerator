@@ -20,6 +20,7 @@ import model.Author;
 import model.Book;
 import model.doi.DOI;
 import model.isbn.ISBN;
+import view.ExceptionDialog;
 
 public class JSONUtils {
 
@@ -79,8 +80,9 @@ public class JSONUtils {
 			DOI doi = DOIFactory.getInstance().create(doiString);
 			doi.toString();
 		} catch (ParseException e) {
-			// TODO show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "001"); // Fehler:001
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 		
 		//TODO new DOI
@@ -120,8 +122,9 @@ public class JSONUtils {
 				return books;
 			} else {
 				//Error parsing JSON
-				// TODO: Show error dialog
-				e.printStackTrace();
+				ExceptionDialog exDialog = new ExceptionDialog(e, "014"); // Fehler:014
+				exDialog.showEcxeptionDialog();
+				//e.printStackTrace();
 				return null;
 			}
 		}

@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import view.ExceptionDialog;
 
 /**
  * Controller that handles the input of user data about a new entry of any
@@ -87,8 +88,9 @@ public class NewEntryController extends AbstractController {
 			System.out.println("Not implemented yet");
 		} catch (IOException e) {
 			//Could not load view
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "013"); // Fehler:013
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 	}
 
@@ -101,6 +103,10 @@ public class NewEntryController extends AbstractController {
 	@FXML
 	public void add() {
 		BibTeXEntry entry = contentController.saveData();
+//		// Sollten der EntryType und der EntryKey null sein, dann wurden nicht alle Pflichfelder ausgefüllt und bei einer Warnung ausgewählt Änderungen vorzunehmen
+//		if (entry.getType() == null && entry.getKey() == null) {
+//			return;
+//		}
 
 		((MainWindowController) from).notifyAdd(entry);
 

@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import view.ExceptionDialog;
 import javafx.stage.FileChooser;
 
 /**
@@ -146,20 +147,24 @@ public class MainWindowController extends AbstractController {
 			updateColumns();
 			updateTable();
 		} catch (TokenMgrException e) {
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "009"); // Fehler:009
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		} catch (ParseException e) {
 			// File could not be parsed correctly.
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "006", "Datei konnte nicht korrekt eingelesen werden."); // Fehler:006
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		} catch (ObjectResolutionException e) {
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "007"); // Fehler:007
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			// File could not be found. Should not occur as all files are opened
 			// via FileChooser.
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "008", "Datei konnte nicht gefunden werden."); // Fehler:008
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 	}
 
@@ -177,8 +182,9 @@ public class MainWindowController extends AbstractController {
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
 				// Could not format file.
-				// TODO Show error dialog
-				e.printStackTrace();
+				ExceptionDialog exDialog = new ExceptionDialog(e, "010", "Datei konnte nicht korrekt formatiert werden."); // Fehler:010
+				exDialog.showEcxeptionDialog();
+				//e.printStackTrace();
 			}
 		} else {
 			saveAs();

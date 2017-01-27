@@ -14,6 +14,7 @@ import org.jbibtex.BibTeXFormatter;
 
 import lombok.Getter;
 import lombok.Setter;
+import view.ExceptionDialog;
 
 /**
  * A Bibfile holds a {@link BibTeXDatabase} and is able to export its content.
@@ -77,8 +78,9 @@ public class BibFile {
 		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 		} catch (IOException e) {
 			//Error while exporting
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "004", "Fehler beim Export."); // Fehler:004
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 	}
 
@@ -95,8 +97,9 @@ public class BibFile {
 			formatter.format(database, writer);
 		} catch (IOException e) {
 			//Error while exporting
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "005", "Fehler beim Export."); // Fehler:005
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 		return writer.toString();
 	}

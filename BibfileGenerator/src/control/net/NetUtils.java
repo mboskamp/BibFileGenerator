@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import model.doi.DOI;
 import model.isbn.ISBN;
+import view.ExceptionDialog;
 
 /**
  * Provides static access to network functionalities.
@@ -62,14 +63,16 @@ public class NetUtils {
 		try {
 			query = String.format(paramName + "=%s:%s", URLEncoder.encode(param, charset.toString()), isbn.toString());
 			return fireRequest(new URL(url + "?" + query));
-		} catch (UnsupportedEncodingException e1) {
+		} catch (UnsupportedEncodingException e) {
 			//Should not occur as the encoding is set to UTF-8
-			// TODO Show error dialog
-			e1.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "011"); // Fehler:011
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		} catch (MalformedURLException e) {
 			//Invalid URL
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "012"); // Fehler:012
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 		return ERROR;
 	}
@@ -87,8 +90,9 @@ public class NetUtils {
 		try {
 			return fireRequest(new URL(url));
 		} catch (MalformedURLException e) {
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "012"); // Fehler:012
+			exDialog.showEcxeptionDialog();
+			//e.printStackTrace();
 		}
 		return ERROR;
 	}
@@ -114,8 +118,9 @@ public class NetUtils {
 			return responseBody;
 		} catch (IOException e) {
 			//Could not open connection.
-			// TODO Show error dialog
-			e.printStackTrace();
+			ExceptionDialog exDialog = new ExceptionDialog(e, "002", "Keine Verbindung zur Datenbank möglich! Bitte überprüfen Sie Ihre Internetverbindung."); //Fehler:002
+			exDialog.showEcxeptionDialog();
+			// e.printStackTrace();
 		}
 		return ERROR;
 	}
