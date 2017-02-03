@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about an
@@ -15,16 +15,16 @@ import javafx.scene.control.TextField;
 public class ArticleController extends AbstractPrintEntryController {
 
 	@FXML
-	public TextField journal;
+	public EntryTextField journal;
 
 	@FXML
-	public TextField volume;
+	public EntryTextField volume;
 
 	@FXML
-	public TextField number;
+	public EntryTextField number;
 
 	@FXML
-	public TextField pages;
+	public EntryTextField pages;
 
 	@Override
 	public void initialize() {

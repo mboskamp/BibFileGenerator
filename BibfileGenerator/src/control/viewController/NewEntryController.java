@@ -103,10 +103,10 @@ public class NewEntryController extends AbstractController {
 	@FXML
 	public void add() {
 		BibTeXEntry entry = contentController.saveData();
-//		// Sollten der EntryType und der EntryKey null sein, dann wurden nicht alle Pflichfelder ausgefüllt und bei einer Warnung ausgewählt Änderungen vorzunehmen
-//		if (entry.getType() == null && entry.getKey() == null) {
-//			return;
-//		}
+		// Sollten der EntryType und der EntryKey null sein, dann wurden nicht alle Pflichfelder ausgefüllt und bei einer Warnung ausgewählt Änderungen vorzunehmen
+		if (entry.getType() == null && entry.getKey() == null) {
+			return;
+		}
 
 		((MainWindowController) from).notifyAdd(entry);
 

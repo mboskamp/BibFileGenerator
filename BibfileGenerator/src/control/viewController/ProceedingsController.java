@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_PROCEEDINGS proceedings} entry.
@@ -14,31 +14,31 @@ import javafx.scene.control.TextField;
 public class ProceedingsController extends AbstractEntryController {
 
 	@FXML
-	public TextField editor;
+	public EntryTextField editor;
 	
 	/**
 	 * volume/number
 	 */
 	@FXML
-	public TextField volume;
+	public EntryTextField volume;
 	
 	/**
 	 * volume/number
 	 */
 	@FXML
-	public TextField number;
+	public EntryTextField number;
 	
 	@FXML
-	public TextField series;
+	public EntryTextField series;
 	
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 	
 	@FXML
-	public TextField publisher;
+	public EntryTextField publisher;
 	
 	@FXML
-	public TextField organization;
+	public EntryTextField organization;
 	
 	@Override
 	public void initialize() {

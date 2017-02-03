@@ -1,7 +1,7 @@
 package control.viewController;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Abstract superclass for any publication that refers to a technical document. <br>
@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 public abstract class AbstractTechnicalDocumentController extends AbstractPrintEntryController {
 
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 	
 	@Override
 	public abstract void initialize();

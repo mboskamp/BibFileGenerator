@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_BOOK book}.
@@ -17,13 +17,13 @@ public class BookController extends AbstractISBNController {
 	 * Author/Editor
 	 */
 	@FXML
-	public TextField author;
+	public EntryTextField author;
 	
 	/**
 	 * Author/Editor
 	 */
 	@FXML
-	public TextField editor;
+	public EntryTextField editor;
 	
 	@Override
 	public void initialize() {

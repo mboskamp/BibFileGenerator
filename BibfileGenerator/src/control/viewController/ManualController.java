@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_MANUAL manual}.
@@ -14,10 +14,10 @@ import javafx.scene.control.TextField;
 public class ManualController extends AbstractTechnicalDocumentController {
 
 	@FXML
-	public TextField organization;
+	public EntryTextField organization;
 	
 	@FXML
-	public TextField edition;
+	public EntryTextField edition;
 	
 	@Override
 	public void initialize() {

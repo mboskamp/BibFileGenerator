@@ -1,7 +1,7 @@
 package control.viewController;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Abstract superclass for any paper that is linked to conference papers.<br>
@@ -16,37 +16,37 @@ import javafx.scene.control.TextField;
 public abstract class AbstractConferenceController extends AbstractPrintEntryController {
 
 	@FXML
-	public TextField booktitle;
+	public EntryTextField booktitle;
 
 	@FXML
-	public TextField editor;
-
-	/**
-	 * volume/number
-	 */
-	@FXML
-	public TextField volume;
+	public EntryTextField editor;
 
 	/**
 	 * volume/number
 	 */
 	@FXML
-	public TextField number;
+	public EntryTextField volume;
+
+	/**
+	 * volume/number
+	 */
+	@FXML
+	public EntryTextField number;
 
 	@FXML
-	public TextField series;
+	public EntryTextField series;
 
 	@FXML
-	public TextField pages;
+	public EntryTextField pages;
 
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 
 	@FXML
-	public TextField organization;
+	public EntryTextField organization;
 
 	@FXML
-	public TextField publisher;
+	public EntryTextField publisher;
 
 	@Override
 	public abstract void initialize();

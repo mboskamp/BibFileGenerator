@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import view.bibComponent.EntryTextField?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="678.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.ManualController">
+<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0" minWidth="597.0" prefHeight="678.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.UnpublishedController">
    <center>
       <ScrollPane maxHeight="674.0" maxWidth="590.0" minHeight="250.0" minWidth="590.0" prefHeight="674.0" prefWidth="590.0" BorderPane.alignment="CENTER">
          <content>
-            <HBox maxHeight="669.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="424.0" prefWidth="550.0">
+            <HBox maxHeight="669.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="326.0" prefWidth="550.0">
                <children>
                   <GridPane minHeight="300.0" prefHeight="379.0" prefWidth="280.0">
                      <columnConstraints>
@@ -26,47 +25,29 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <EntryTextField required="true" fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
+                        <TextField fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="true" fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        </TextField>
+                        <TextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="true" fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        </TextField>
+                        <TextField fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="true" fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <EntryTextField required="false" fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        </TextField>
+                        <TextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="false" fx:id="organization" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="false" fx:id="series" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </EntryTextField>
-                        <EntryTextField required="false" fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </EntryTextField>
+                        </TextField>
                         <Label fx:id="addressLabel" minHeight="30.0" prefHeight="30.0" text="Adresse">
                            <GridPane.margin>
                               <Insets top="5.0" />
@@ -83,7 +64,7 @@
                               <Insets left="15.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0" text="Jahr" GridPane.rowIndex="2">
+                        <Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0" text="Notiz" GridPane.rowIndex="2">
                            <padding>
                               <Insets left="15.0" />
                            </padding>
@@ -96,14 +77,6 @@
                               <Insets left="15.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0" text="Autor" GridPane.rowIndex="5">
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Label>
                         <Separator minHeight="30.0" prefHeight="30.0" prefWidth="200.0" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets top="5.0" />
@@ -114,7 +87,7 @@
                               <Insets top="5.0" />
                            </GridPane.margin>
                         </Separator>
-                        <Label fx:id="organizationLabel" minHeight="30.0" prefHeight="30.0" text="Organisation" GridPane.rowIndex="6">
+                        <Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0" text="Monat" GridPane.rowIndex="5">
                            <padding>
                               <Insets left="15.0" />
                            </padding>
@@ -122,25 +95,12 @@
                               <Insets top="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="seriesLabel" minHeight="30.0" prefHeight="30.0" text="Ausgabe" GridPane.rowIndex="7">
+                        <Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0" text="Jahr" GridPane.rowIndex="6">
                            <padding>
                               <Insets left="15.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0" text="Monat" GridPane.rowIndex="8">
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0" text="Notiz" GridPane.rowIndex="9">
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                        </Label>
-                        <EntryTextField required="false" fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                </children>

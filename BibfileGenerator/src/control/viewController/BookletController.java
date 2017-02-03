@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_BOOKLET booklet}.
@@ -14,10 +14,10 @@ import javafx.scene.control.TextField;
 public class BookletController extends AbstractPrintEntryController {
 
 	@FXML
-	public TextField howpublished;
+	public EntryTextField howpublished;
 	
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 	
 	@Override
 	public void initialize() {

@@ -1,7 +1,7 @@
 package control.viewController;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Abstract superclass for any academic or scientific paper.<br>
@@ -16,13 +16,13 @@ import javafx.scene.control.TextField;
 public abstract class AbstractAcademicDocumentController extends AbstractPrintEntryController {
 
 	@FXML
-	public TextField school;
+	public EntryTextField school;
 
 	@FXML
-	public TextField type;
+	public EntryTextField type;
 
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 
 	@Override
 	public abstract void initialize();

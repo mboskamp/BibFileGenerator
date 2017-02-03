@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about an {@link BibTeXEntry#TYPE_INCOLLECTION incollection}.
@@ -14,16 +14,16 @@ import javafx.scene.control.TextField;
 public class IncollectionController extends AbstractISBNController {
 
 	@FXML
-	public TextField booktitle;
+	public EntryTextField booktitle;
 	
 	@FXML
-	public TextField type;
+	public EntryTextField type;
 	
 	@FXML
-	public TextField chapter;
+	public EntryTextField chapter;
 	
 	@FXML
-	public TextField pages;
+	public EntryTextField pages;
 	
 	@Override
 	public void initialize() {

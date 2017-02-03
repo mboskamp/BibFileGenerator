@@ -4,7 +4,7 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import view.bibComponent.EntryTextField;
 
 /**
  * Controller that handles the input of user data about a {@link BibTeXEntry#TYPE_TECHREPORT techreport}.
@@ -14,13 +14,13 @@ import javafx.scene.control.TextField;
 public class TechreportController extends AbstractTechnicalDocumentController {
 
 	@FXML
-	public TextField institution;
+	public EntryTextField institution;
 	
 	@FXML
-	public TextField type;
+	public EntryTextField type;
 	
 	@FXML
-	public TextField number;
+	public EntryTextField number;
 	
 	@Override
 	public void initialize() {

@@ -7,14 +7,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 import org.jbibtex.StringValue;
 import org.jbibtex.Value;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import view.ExceptionDialog;
+import view.bibComponent.EntryTextField;
 
 /**
  * Abstract superclass for any view controller that is used to gather
@@ -59,22 +64,22 @@ public abstract class AbstractEntryController extends AbstractController {
 	}
 
 	@FXML
-	public TextField title;
+	public EntryTextField title;
 
 	@FXML
-	public TextField year;
+	public EntryTextField year;
 
 	@FXML
-	public TextField month;
+	public EntryTextField month;
 
 	@FXML
-	public TextField note;
+	public EntryTextField note;
 
 	@FXML
-	public TextField key;
+	public EntryTextField key;
 
 	@FXML
-	public TextField referenceKey;
+	public EntryTextField referenceKey;
 
 	@FXML
 	public abstract void initialize();
@@ -86,35 +91,34 @@ public abstract class AbstractEntryController extends AbstractController {
 
 	/**
 	 * Called when the user hits the 'add' button in the NewEntryView. Adds all
-	 * TextField values to the {@link BibTeXEntry}.
+	 * EntryTextField values to the {@link BibTeXEntry}.
 	 * 
 	 * @return The reference key to retrieve the saved entry from
 	 *         {@link GlobalStorage}.
 	 */
 	public BibTeXEntry saveData() {
 		Map<Key, Value> values = new HashMap<Key, Value>();
-//		boolean isCorrect = false;
+		boolean isCorrect = false;
 		for (Field field : getFields()) {
-			if(field.getType() == TextField.class){
-//			if (field.getType() == EntryTextField.class) {
+			if (field.getType() == EntryTextField.class) {
 				Key key = AbstractEntryController.fields.get(field.getName());
 				if (key != null) {
 					try {
-						values.put(key, new StringValue(((TextField) field.get(this)).getText()));
-						// Muss wieder einkommentiert werden, wenn es oke ist, dass so die Pflichtfeldprüfung ist
-//						StringValue value = new StringValue(((EntryTextField) field.get(this)).getText());
-//						if ((value.getString().equals("") || value.getString().equals(null)) && ((EntryTextField) field.get(this)).isRequired() && !isCorrect) {
-//							Alert alert = new Alert(AlertType.CONFIRMATION);
-//							alert.setTitle("Pflichtfeldprüfung");
-//							alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
-//							alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
-//							Optional<ButtonType> result = alert.showAndWait();
-//							if (result.get() == ButtonType.OK){
-//							    continue;
-//							} else {
-//							    return new BibTeXEntry(null , null);
-//							}
-//						}
+						StringValue value = new StringValue(((EntryTextField) field.get(this)).getText());
+						if ((value.getString().equals("") || value.getString().equals(null)) && ((EntryTextField) field.get(this)).isRequired() && !isCorrect) {
+							Alert alert = new Alert(AlertType.CONFIRMATION);
+							alert.setTitle("Pflichtfeldprüfung");
+							alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
+							alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
+							Optional<ButtonType> result = alert.showAndWait();
+							if (result.get() == ButtonType.OK){
+								isCorrect = true;
+							    continue;
+							} else {
+							    return new BibTeXEntry(null , null);
+							}
+						}
+						values.put(key, value);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						ExceptionDialog exDialog = new ExceptionDialog(e, "003"); // Fehler:003
 						exDialog.showEcxeptionDialog();

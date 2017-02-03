@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import view.bibComponent.EntryTextField?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -30,42 +31,42 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
+                        <EntryTextField required="true" fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        </EntryTextField>
+                        <EntryTextField required="true" fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="school" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        </EntryTextField>
+                        <EntryTextField required="true" fx:id="school" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        </EntryTextField>
+                        <EntryTextField required="true" fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="type" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        </EntryTextField>
+                        <EntryTextField required="true" fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <EntryTextField required="false" fx:id="type" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        </EntryTextField>
+                        <EntryTextField required="false" fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        </EntryTextField>
+                        <EntryTextField required="false" fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
-                        </TextField>
+                        </EntryTextField>
                         <Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0" text="Autor">
                            <GridPane.margin>
                               <Insets top="5.0" />
@@ -142,7 +143,7 @@
                               <Insets left="15.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <EntryTextField required="false" fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                      </children>
                   </GridPane>
                </children>

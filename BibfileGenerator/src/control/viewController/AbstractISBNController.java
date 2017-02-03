@@ -8,11 +8,11 @@ import control.net.NetUtils;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import model.Book;
 import model.isbn.ISBN;
+import view.bibComponent.EntryTextField;
 
 /**
  * Abstract superclass for any publication that has a ISBN number. <br>
@@ -31,7 +31,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 	public Button isbnSearchButton;
 
 	@FXML
-	public TextField isbn;
+	public EntryTextField isbn;
 
 	@FXML
 	public Label isbnError;
@@ -55,31 +55,31 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 	 * FIELDS
 	 */
 	@FXML
-	public TextField publisher;
+	public EntryTextField publisher;
 
 	@FXML
-	public TextField edition;
+	public EntryTextField edition;
 
 	@FXML
-	public TextField address;
+	public EntryTextField address;
 
 	@FXML
-	public TextField series;
-
-	/**
-	 * Volume/Number
-	 */
-	@FXML
-	public TextField volume;
+	public EntryTextField series;
 
 	/**
 	 * Volume/Number
 	 */
 	@FXML
-	public TextField number;
+	public EntryTextField volume;
+
+	/**
+	 * Volume/Number
+	 */
+	@FXML
+	public EntryTextField number;
 
 	@FXML
-	public TextField editor;
+	public EntryTextField editor;
 
 	private boolean validISBN = false;
 
