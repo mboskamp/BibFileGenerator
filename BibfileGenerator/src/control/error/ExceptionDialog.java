@@ -1,4 +1,4 @@
-package view;
+package control.error;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -18,28 +18,28 @@ import javafx.scene.layout.Priority;
  */
 public class ExceptionDialog {
 
+	private final static String ASK_DEVS_MESSAGE = "Bei Fragen wenden Sie sich bitte an die Entwickler.";
+	
 	private Exception exception  = null;
 	
-	private String errorId = "";
+	private Error error;
 	
 	private String contentText = "";
 	
-	public ExceptionDialog(Exception ex, String errId) {
+	public ExceptionDialog(Error err, Exception ex) {
 		exception = ex;
-		errorId = errId;
-	}
-	
-	public ExceptionDialog(Exception ex, String errId, String cText) {
-		exception = ex;
-		errorId = errId;
-		contentText = cText;
+		error = err;
+		if(err.getErrorMessage() != null){
+			contentText = err.getErrorMessage();
+		}
+		showEcxeptionDialog();
 	}
 	
 	public void showEcxeptionDialog() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Fehler");
-		alert.setHeaderText("Es ist ein Fehler aufgetreten. ErrorID: " + errorId);
-		alert.setContentText(contentText == ""? "Bei Fragen wenden Sie sich bitte an die Entwickler." : contentText + "\n\nBei Fragen wenden Sie sich bitte an die Entwickler.");
+		alert.setHeaderText("Es ist ein Fehler aufgetreten. ErrorID: " + error.name());
+		alert.setContentText(contentText == ""? ASK_DEVS_MESSAGE : contentText + "\n\n" + ASK_DEVS_MESSAGE);
 
 		// Create expandable Exception.
 		StringWriter sw = new StringWriter();
@@ -67,6 +67,5 @@ public class ExceptionDialog {
 		alert.getDialogPane().setExpandableContent(expContent);
 
 		alert.showAndWait();
-	}
-	
+	}	
 }

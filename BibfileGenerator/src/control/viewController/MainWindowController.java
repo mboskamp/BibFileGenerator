@@ -18,6 +18,8 @@ import org.jbibtex.ObjectResolutionException;
 import org.jbibtex.ParseException;
 import org.jbibtex.TokenMgrException;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +32,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import view.ExceptionDialog;
 import javafx.stage.FileChooser;
 
 /**
@@ -146,25 +147,10 @@ public class MainWindowController extends AbstractController {
 
 			updateColumns();
 			updateTable();
-		} catch (TokenMgrException e) {
-			ExceptionDialog exDialog = new ExceptionDialog(e, "009"); // Fehler:009
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
-		} catch (ParseException e) {
-			// File could not be parsed correctly.
-			ExceptionDialog exDialog = new ExceptionDialog(e, "006", "Datei konnte nicht korrekt eingelesen werden."); // Fehler:006
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
-		} catch (ObjectResolutionException e) {
-			ExceptionDialog exDialog = new ExceptionDialog(e, "007"); // Fehler:007
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+		} catch (TokenMgrException | ParseException e) {
+			new ExceptionDialog(Error.INTERNAL_ERROR, e);
 		} catch (FileNotFoundException e) {
-			// File could not be found. Should not occur as all files are opened
-			// via FileChooser.
-			ExceptionDialog exDialog = new ExceptionDialog(e, "008", "Datei konnte nicht gefunden werden."); // Fehler:008
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.FILE_NOT_FOUND_ERROR, e);
 		}
 	}
 
@@ -181,10 +167,7 @@ public class MainWindowController extends AbstractController {
 			try {
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
-				// Could not format file.
-				ExceptionDialog exDialog = new ExceptionDialog(e, "010", "Datei konnte nicht korrekt formatiert werden."); // Fehler:010
-				exDialog.showEcxeptionDialog();
-				//e.printStackTrace();
+				new ExceptionDialog(Error.FORMATTING_ERROR, e);
 			}
 		} else {
 			saveAs();

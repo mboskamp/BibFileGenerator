@@ -15,12 +15,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import control.doi.DOIFactory;
+import control.error.Error;
+import control.error.ExceptionDialog;
 import control.isbn.ISBNUtils;
 import model.Author;
 import model.Book;
 import model.doi.DOI;
 import model.isbn.ISBN;
-import view.ExceptionDialog;
 
 public class JSONUtils {
 
@@ -80,9 +81,7 @@ public class JSONUtils {
 			DOI doi = DOIFactory.getInstance().create(doiString);
 			doi.toString();
 		} catch (ParseException e) {
-			ExceptionDialog exDialog = new ExceptionDialog(e, "001"); // Fehler:001
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.PARSING_ERROR, e);
 		}
 		
 		//TODO new DOI
@@ -121,10 +120,7 @@ public class JSONUtils {
 			if (books.size() != 0) {
 				return books;
 			} else {
-				//Error parsing JSON
-				ExceptionDialog exDialog = new ExceptionDialog(e, "014"); // Fehler:014
-				exDialog.showEcxeptionDialog();
-				//e.printStackTrace();
+				new ExceptionDialog(Error.PARSING_ERROR, e); 
 				return null;
 			}
 		}

@@ -11,9 +11,10 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import model.doi.DOI;
 import model.isbn.ISBN;
-import view.ExceptionDialog;
 
 /**
  * Provides static access to network functionalities.
@@ -65,14 +66,9 @@ public class NetUtils {
 			return fireRequest(new URL(url + "?" + query));
 		} catch (UnsupportedEncodingException e) {
 			//Should not occur as the encoding is set to UTF-8
-			ExceptionDialog exDialog = new ExceptionDialog(e, "011"); // Fehler:011
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.URL_FORMAT_ERROR, e);
 		} catch (MalformedURLException e) {
-			//Invalid URL
-			ExceptionDialog exDialog = new ExceptionDialog(e, "012"); // Fehler:012
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.URL_INVALID_ERROR, e);
 		}
 		return ERROR;
 	}
@@ -90,9 +86,7 @@ public class NetUtils {
 		try {
 			return fireRequest(new URL(url));
 		} catch (MalformedURLException e) {
-			ExceptionDialog exDialog = new ExceptionDialog(e, "012"); // Fehler:012
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.URL_FORMAT_ERROR, e);
 		}
 		return ERROR;
 	}
@@ -117,10 +111,7 @@ public class NetUtils {
 			scanner.close();
 			return responseBody;
 		} catch (IOException e) {
-			//Could not open connection.
-			ExceptionDialog exDialog = new ExceptionDialog(e, "002", "Keine Verbindung zur Datenbank möglich! Bitte überprüfen Sie Ihre Internetverbindung."); //Fehler:002
-			exDialog.showEcxeptionDialog();
-			// e.printStackTrace();
+			new ExceptionDialog(Error.NO_CONNECTION_ERROR, e);
 		}
 		return ERROR;
 	}

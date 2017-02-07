@@ -14,11 +14,12 @@ import org.jbibtex.Key;
 import org.jbibtex.StringValue;
 import org.jbibtex.Value;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import view.ExceptionDialog;
 import view.bibComponent.EntryTextField;
 
 /**
@@ -120,9 +121,7 @@ public abstract class AbstractEntryController extends AbstractController {
 						}
 						values.put(key, value);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
-						ExceptionDialog exDialog = new ExceptionDialog(e, "003"); // Fehler:003
-						exDialog.showEcxeptionDialog();
-						//e.printStackTrace();
+						new ExceptionDialog(Error.ILLEGAL_ACCESS_ERROR, e);
 					} catch (Exception e) {
 						// TODO Remove after all fields are implemented
 						System.out.println("Field: " + field.getName() + " not in form");

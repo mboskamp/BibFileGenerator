@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.jbibtex.BibTeXEntry;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import control.viewController.MainWindowController;
 
 import javafx.beans.value.ChangeListener;
@@ -17,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import view.ExceptionDialog;
 
 /**
  * Controller that handles the input of user data about a new entry of any
@@ -87,10 +88,7 @@ public class NewEntryController extends AbstractController {
 		} catch (IllegalStateException ise){
 			System.out.println("Not implemented yet");
 		} catch (IOException e) {
-			//Could not load view
-			ExceptionDialog exDialog = new ExceptionDialog(e, "013"); // Fehler:013
-			exDialog.showEcxeptionDialog();
-			//e.printStackTrace();
+			new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
 		}
 	}
 
