@@ -122,9 +122,6 @@ public abstract class AbstractEntryController extends AbstractController {
 						values.put(key, value);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						new ExceptionDialog(Error.ILLEGAL_ACCESS_ERROR, e);
-					} catch (Exception e) {
-						// TODO Remove after all fields are implemented
-						System.out.println("Field: " + field.getName() + " not in form");
 					}
 				}
 			}

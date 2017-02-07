@@ -93,6 +93,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 		isbn.textProperty().addListener((observable, oldValue, newValue) -> {
 			System.out.println("textfield changed from " + oldValue + " to " + newValue);
 			validateISBN();
+			isbnError.setText("");
 		});
 	}
 
@@ -105,7 +106,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 			String json = NetUtils.fireISBNRequest(i);
 			ArrayList<Book> books = JSONUtils.parseJSONBookResponse(json);
 			if (books != null && books.size() > 0) {
-				Book b = books.get(0); // TODO selection
+				Book b = books.get(0);
 				author.setText(b.getAuthors());
 				title.setText(b.getTitle());
 				publisher.setText(b.getPublisher());

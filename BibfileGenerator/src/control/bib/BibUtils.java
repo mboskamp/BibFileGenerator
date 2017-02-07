@@ -13,6 +13,8 @@ import org.jbibtex.BibTeXParser;
 import org.jbibtex.ParseException;
 import org.jbibtex.TokenMgrException;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import model.bib.BibFile;
 
 /**
@@ -73,10 +75,11 @@ public class BibUtils {
 			return new BibFile(parser.parse(reader));
 		} catch (FileNotFoundException e) {
 			// File not Found. Return null.
+			new ExceptionDialog(Error.FILE_NOT_FOUND_ERROR, e);
 		} catch (TokenMgrException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO: Exception while parsing.
+			new ExceptionDialog(Error.PARSING_ERROR, e);
 		}
 		return null;
 	}
