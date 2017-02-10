@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import view.bibComponent.*?>
-<?import java.lang.*?>
+<?import view.bibComponent.EntryTextField?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
@@ -39,7 +41,7 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label2" maxWidth="150.0" minWidth="150.0" text="Zeitschrift">
+            <Label fx:id="label2" maxWidth="150.0" minWidth="150.0" text="Schule*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
@@ -67,7 +69,7 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label4" maxWidth="150.0" minWidth="150.0" text="Ausgabe*">
+            <Label fx:id="label4" maxWidth="150.0" minWidth="150.0" text="Referenz*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
@@ -81,7 +83,7 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label5" maxWidth="150.0" minWidth="150.0" text="Referenz*">
+            <Label fx:id="label5" maxWidth="150.0" minWidth="150.0" text="Typ">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
@@ -95,7 +97,7 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label6" maxWidth="150.0" minWidth="150.0" text="Nummer">
+            <Label fx:id="label6" maxWidth="150.0" minWidth="150.0" text="Adresse">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
@@ -109,7 +111,7 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label7" maxWidth="150.0" minWidth="150.0" text="Seiten">
+            <Label fx:id="label7" maxWidth="150.0" minWidth="150.0" text="Monat">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
@@ -123,40 +125,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label8" maxWidth="150.0" minWidth="150.0" text="Monat">
+            <Label fx:id="label8" maxWidth="150.0" minWidth="150.0" text="Notiz">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
             <EntryTextField fx:id="entryTextField8">
-               <FlowPane.margin>
-                  <Insets top="6.0" />
-               </FlowPane.margin>
-            </EntryTextField>
-         </children>
-      </FlowPane>
-      <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
-         <children>
-            <Label fx:id="label9" maxWidth="150.0" minWidth="150.0" text="Notiz">
-               <FlowPane.margin>
-                  <Insets left="10.0" right="10.0" top="6.0" />
-               </FlowPane.margin>
-            </Label>
-            <EntryTextField fx:id="entryTextField9">
-               <FlowPane.margin>
-                  <Insets top="6.0" />
-               </FlowPane.margin>
-            </EntryTextField>
-         </children>
-      </FlowPane>
-      <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
-         <children>
-            <Label fx:id="label10" maxWidth="150.0" minWidth="150.0" text="Schlüssel">
-               <FlowPane.margin>
-                  <Insets left="10.0" right="10.0" top="6.0" />
-               </FlowPane.margin>
-            </Label>
-            <EntryTextField fx:id="entryTextField10">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>

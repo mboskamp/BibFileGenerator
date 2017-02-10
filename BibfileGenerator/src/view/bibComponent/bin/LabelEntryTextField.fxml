@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import view.bibComponent.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="label" maxWidth="150.0" minWidth="150.0">
+         <FlowPane.margin>
+            <Insets left="10.0" right="10.0" top="6.0" />
+         </FlowPane.margin>
+      </Label>
+      <EntryTextField fx:id="entryTextField">
+         <FlowPane.margin>
+            <Insets top="6.0" />
+         </FlowPane.margin></EntryTextField>
+   </children>
+</FlowPane>
