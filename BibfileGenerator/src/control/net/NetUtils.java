@@ -65,10 +65,12 @@ public class NetUtils {
 			query = String.format(paramName + "=%s:%s", URLEncoder.encode(param, charset.toString()), isbn.toString());
 			return fireRequest(new URL(url + "?" + query));
 		} catch (UnsupportedEncodingException e) {
-			//Should not occur as the encoding is set to UTF-8
+			// Should not occur as the encoding is set to UTF-8
 			new ExceptionDialog(Error.URL_FORMAT_ERROR, e);
 		} catch (MalformedURLException e) {
 			new ExceptionDialog(Error.URL_INVALID_ERROR, e);
+		} catch (IOException e) {
+			new ExceptionDialog(Error.ISBN_NOT_FOUND, e);
 		}
 		return ERROR;
 	}
@@ -81,12 +83,14 @@ public class NetUtils {
 	 *            The DOI to lookup in the database.
 	 * @return the JSON response string
 	 */
-	public static String fireDOIRequest(DOI doi) {
-		String url = "http://api.crossref.org/works/" + doi.toString();
+	public static String fireDOIRequest(String doi) {
+		String url = "http://api.crossref.org/works/" + doi;
 		try {
 			return fireRequest(new URL(url));
 		} catch (MalformedURLException e) {
 			new ExceptionDialog(Error.URL_FORMAT_ERROR, e);
+		} catch (IOException e) {
+			new ExceptionDialog(Error.DOI_NOT_FOUND, e, "Die folgende DOI konnte nicht gefunden werden: " + doi);
 		}
 		return ERROR;
 	}
@@ -98,21 +102,16 @@ public class NetUtils {
 	 *            The {@link URL} that will be requested
 	 * @return The response body
 	 */
-	private static String fireRequest(URL url) {
-		try {
-			Charset charset = StandardCharsets.UTF_8;
-			URLConnection connection;
-			connection = url.openConnection();
-			connection.setRequestProperty("Accept-Charset", charset.toString());
-			InputStream response = connection.getInputStream();
+	private static String fireRequest(URL url) throws IOException {
+		Charset charset = StandardCharsets.UTF_8;
+		URLConnection connection;
+		connection = url.openConnection();
+		connection.setRequestProperty("Accept-Charset", charset.toString());
+		InputStream response = connection.getInputStream();
 
-			Scanner scanner = new Scanner(response);
-			String responseBody = scanner.useDelimiter("\\A").next();
-			scanner.close();
-			return responseBody;
-		} catch (IOException e) {
-			new ExceptionDialog(Error.NO_CONNECTION_ERROR, e);
-		}
-		return ERROR;
+		Scanner scanner = new Scanner(response);
+		String responseBody = scanner.useDelimiter("\\A").next();
+		scanner.close();
+		return responseBody;
 	}
 }

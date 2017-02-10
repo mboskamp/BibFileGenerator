@@ -106,7 +106,7 @@ public abstract class AbstractEntryController extends AbstractController {
 				if (key != null) {
 					try {
 						StringValue value = new StringValue(((EntryTextField) field.get(this)).getText());
-						if ((value.getString().equals("") || value.getString().equals(null)) && ((EntryTextField) field.get(this)).isRequired() && !isCorrect) {
+						if ((value.getString() != null) && (value.getString().equals("") || value.getString().equals(null)) && ((EntryTextField) field.get(this)).isRequired() && !isCorrect) {
 							Alert alert = new Alert(AlertType.CONFIRMATION);
 							alert.setTitle("Pflichtfeldprüfung");
 							alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
@@ -116,7 +116,7 @@ public abstract class AbstractEntryController extends AbstractController {
 								isCorrect = true;
 							    continue;
 							} else {
-							    return new BibTeXEntry(null , null);
+							    return null;
 							}
 						}
 						values.put(key, value);

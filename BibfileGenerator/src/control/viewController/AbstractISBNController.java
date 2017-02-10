@@ -2,6 +2,8 @@ package control.viewController;
 
 import java.util.ArrayList;
 
+import control.error.Error;
+import control.error.ExceptionDialog;
 import control.isbn.ISBNUtils;
 import control.json.JSONUtils;
 import control.net.NetUtils;
@@ -99,8 +101,9 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 
 	@FXML
 	public void searchISBN() {
-		validateISBN(); // TODO remove after testing
-
+		
+		validateISBN(); //FIXME Remove after default ISBN is removed
+		
 		if (validISBN) {
 			ISBN i = ISBNUtils.validateAndReturn(isbn.getText());
 			String json = NetUtils.fireISBNRequest(i);
@@ -124,6 +127,8 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 				isbn13Label.setVisible(true);
 				isbn10.setText(ISBNUtils.formatISBN(i.getIsbn10()));
 				isbn13.setText(ISBNUtils.formatISBN(i.getIsbn13()));
+			}else{
+				new ExceptionDialog(Error.ISBN_NOT_FOUND, (Exception) null);
 			}
 		} else {
 			isbnError.setText(ISBN_ERROR);

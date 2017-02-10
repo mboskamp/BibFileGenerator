@@ -21,7 +21,7 @@ public enum Error {
 		public String getErrorMessage() {
 			return "Keine Verbindung zur Datenbank möglich! Bitte überprüfen Sie Ihre Internetverbindung.";
 		}
-	}, ILLEGAL_ACCESS_ERROR {
+	},	ILLEGAL_ACCESS_ERROR {
 		@Override
 		public String getErrorMessage() {
 			return "Ein Zugriffsfehler ist aufgetreten.";
@@ -49,7 +49,17 @@ public enum Error {
 	}, INTERNAL_ERROR {
 		@Override
 		public String getErrorMessage() {
-			return "Ein interner Fehler ist aufgetreten";
+			return "Ein interner Fehler ist aufgetreten.";
+		}
+	}, ISBN_NOT_FOUND {
+		@Override
+		public String getErrorMessage() {
+			return "Die ISBN-Suche ergab keine Ergebnisse.";
+		}
+	}, DOI_NOT_FOUND {
+		@Override
+		public String getErrorMessage(){
+			return "Die DOI-Suche ergab keine Ergebnisse.";
 		}
 	};
 	

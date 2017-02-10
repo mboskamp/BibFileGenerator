@@ -14,7 +14,6 @@ import org.jbibtex.BibTeXFormatter;
 import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
 import org.jbibtex.Key;
-import org.jbibtex.ObjectResolutionException;
 import org.jbibtex.ParseException;
 import org.jbibtex.TokenMgrException;
 
@@ -154,7 +153,6 @@ public class MainWindowController extends AbstractController {
 		}
 	}
 
-	// TODO use BibUtils
 	/**
 	 * The 'save' option calls this method that opens a new 'save' dialog. If no
 	 * current save path is present (e.g. if this is the first time this file is
