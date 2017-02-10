@@ -26,15 +26,26 @@ public class ExceptionDialog {
 	
 	private String contentText = "";
 	
-	public ExceptionDialog(Error err, Exception ex) {
+	public ExceptionDialog(Error err, Exception ex, String message){
 		exception = ex;
 		error = err;
-		if(err.getErrorMessage() != null){
+		if(err != null && err.getErrorMessage() != null){
 			contentText = err.getErrorMessage();
+		}
+		if(message != null){
+			contentText += "\r\n" + message;
 		}
 		showEcxeptionDialog();
 	}
+
+	public ExceptionDialog(Error err, Exception ex) {
+		this(err, ex, null);
+	}
 	
+	public ExceptionDialog(Error err, String message) {
+		this(err, null, message);
+	}
+
 	public void showEcxeptionDialog() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Fehler");
@@ -47,7 +58,7 @@ public class ExceptionDialog {
 		exception.printStackTrace(pw);
 		String exceptionText = sw.toString();
 
-		Label label = new Label("The exception stacktrace was:");
+		Label label = new Label("Fehlerdetails:");
 
 		TextArea textArea = new TextArea(exceptionText);
 		textArea.setEditable(false);
