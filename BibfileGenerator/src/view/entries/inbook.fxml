@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="678.0" maxWidth="597.0" minHeight="250.0"
+<BorderPane maxHeight="828.0" maxWidth="597.0" minHeight="250.0"
 	minWidth="597.0" prefHeight="678.0" prefWidth="597.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="control.viewController.InbookController">
@@ -16,8 +16,8 @@
 			minWidth="590.0" prefHeight="674.0" prefWidth="590.0"
 			BorderPane.alignment="CENTER">
 			<content>
-				<BorderPane maxHeight="626.0" maxWidth="595.0" minHeight="350.0"
-					minWidth="587.0" prefHeight="626.0" prefWidth="587.0">
+				<BorderPane maxHeight="783.0" maxWidth="595.0" minHeight="350.0"
+					minWidth="587.0" prefHeight="783.0" prefWidth="587.0">
 					<top>
 						<GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0"
 							minWidth="550.0" prefHeight="80.0" prefWidth="550.0"
@@ -66,8 +66,8 @@
 						</GridPane>
 					</top>
 					<center>
-						<HBox maxHeight="553.0" maxWidth="550.0" minHeight="260.0"
-							minWidth="550.0" prefHeight="553.0" prefWidth="550.0">
+						<HBox maxHeight="665.0" maxWidth="550.0" minHeight="260.0"
+							minWidth="550.0" prefHeight="665.0" prefWidth="550.0">
 							<children>
 								<GridPane minHeight="300.0" prefHeight="375.0">
 									<columnConstraints>
@@ -77,231 +77,66 @@
 											maxWidth="190.0" minWidth="10.0" prefWidth="179.0" />
 									</columnConstraints>
 									<rowConstraints>
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
-										<RowConstraints minHeight="10.0" prefHeight="30.0"
-											vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 									</rowConstraints>
 									<children>
-										<EntryTextField required="true" fx:id="author" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="true" fx:id="title" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="1">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="true" fx:id="publisher" minHeight="30.0"
-											minWidth="190.0" prefHeight="30.0" prefWidth="190.0"
-											GridPane.columnIndex="1" GridPane.rowIndex="2">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="true" fx:id="year" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="3">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="true" fx:id="volume" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="4" />
-										<EntryTextField required="true" fx:id="referenceKey" minHeight="30.0"
-											minWidth="190.0" prefHeight="30.0" prefWidth="190.0"
-											GridPane.columnIndex="1" GridPane.rowIndex="5">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="false" fx:id="number" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="7">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="false" fx:id="pages" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="8">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="false" fx:id="month" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="9">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="false" fx:id="note" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="10">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<EntryTextField required="false" fx:id="key" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="11">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</EntryTextField>
-										<Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0"
-											text="Autor">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<Label fx:id="titleLabel" minHeight="30.0" prefHeight="30.0"
-											text="Titel" GridPane.rowIndex="1">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<Label fx:id="journalLabel" minHeight="30.0" prefHeight="30.0"
-											text="Seite" GridPane.rowIndex="2">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0"
-											text="Verlag" GridPane.rowIndex="3">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="volumeLabel" minHeight="30.0" prefHeight="30.0"
-											text="Jahr" GridPane.rowIndex="4">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<Label fx:id="referenceKeyLabel" minHeight="30.0"
-											prefHeight="30.0" text="Referenz" GridPane.rowIndex="5">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Separator minHeight="30.0" prefHeight="30.0"
-											prefWidth="200.0" GridPane.rowIndex="6">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Separator>
-										<Separator minHeight="30.0" prefHeight="30.0"
-											prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Separator>
-										<Label fx:id="numberLabel" minHeight="30.0" prefHeight="30.0"
-											text="Nummer" GridPane.rowIndex="7">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="pagesLabel" minHeight="30.0" prefHeight="30.0"
-											text="Serie" GridPane.rowIndex="8">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0"
-											text="Typ" GridPane.rowIndex="9">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0"
-											text="Adresse" GridPane.rowIndex="10">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="keyLabel" minHeight="30.0" prefHeight="30.0"
-											text="Edition" GridPane.rowIndex="11">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-											<GridPane.margin>
-												<Insets top="5.0" />
-											</GridPane.margin>
-										</Label>
-										<Label fx:id="keyLabel1" minHeight="30.0" prefHeight="30.0"
-											text="Monat" GridPane.rowIndex="12">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<Label fx:id="keyLabel2" minHeight="30.0" prefHeight="30.0"
-											text="Edition" GridPane.rowIndex="13">
-											<padding>
-												<Insets left="15.0" />
-											</padding>
-										</Label>
-										<EntryTextField required="true" fx:id="key1" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="12" />
-										<EntryTextField required="true" fx:id="key11" minHeight="30.0" minWidth="190.0"
-											prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1"
-											GridPane.rowIndex="13" />
+										<Label fx:id="referenceKeyLabel" minHeight="30.0" prefHeight="30.0" text="Referenz *" GridPane.rowIndex="0" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="1" />
+										<Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0" text="Autor *" GridPane.rowIndex="2" />
+										<Label fx:id="editorLabel" minHeight="30.0" prefHeight="30.0" text="Redakteur *" GridPane.rowIndex="3" />
+										<Label fx:id="titleLabel" minHeight="30.0" prefHeight="30.0" text="Titel *" GridPane.rowIndex="4" />
+										<Label fx:id="booktitleLabel" minHeight="30.0" prefHeight="30.0" text="Buchtitel *" GridPane.rowIndex="5" />
+										<Label fx:id="chapterLabel" minHeight="30.0" prefHeight="30.0" text="Kapitel *" GridPane.rowIndex="6" />
+										<Label fx:id="pagesLabel" minHeight="30.0" prefHeight="30.0" text="Seite(n) *" GridPane.rowIndex="7" />
+										<Label fx:id="publisherLabel" minHeight="30.0" prefHeight="30.0" text="Herausgeber *" GridPane.rowIndex="8" />
+										<Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0" text="Jahr *" GridPane.rowIndex="9" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="10" />
+										<Label fx:id="volumeLabel" minHeight="30.0" prefHeight="30.0" text="Ausgabe" GridPane.rowIndex="11" />
+										<Label fx:id="numberLabel" minHeight="30.0" prefHeight="30.0" text="Nummer" GridPane.rowIndex="12" />
+										<Label fx:id="seriesLabel" minHeight="30.0" prefHeight="30.0" text="Serie" GridPane.rowIndex="13" />
+										<Label fx:id="typeLabel" minHeight="30.0" prefHeight="30.0" text="Typ" GridPane.rowIndex="14" />
+										<Label fx:id="addressLabel" minHeight="30.0" prefHeight="30.0" text="Adresse" GridPane.rowIndex="15" />
+										<Label fx:id="editionLabel" minHeight="30.0" prefHeight="30.0" text="Edition" GridPane.rowIndex="16" />
+										<Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0" text="Monat" GridPane.rowIndex="17" />
+										<Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0" text="Notiz" GridPane.rowIndex="18" />
+
+										<EntryTextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+										<EntryTextField fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+										<EntryTextField fx:id="editor" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+										<EntryTextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+										<EntryTextField fx:id="booktitle" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+										<EntryTextField fx:id="chapter" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+										<EntryTextField fx:id="pages" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+										<EntryTextField fx:id="publisher" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+										<EntryTextField fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="10" GridPane.columnIndex="1" />
+										<EntryTextField fx:id="volume" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+										<EntryTextField fx:id="number" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+										<EntryTextField fx:id="series" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+										<EntryTextField fx:id="type" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+										<EntryTextField fx:id="address" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+										<EntryTextField fx:id="edition" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+										<EntryTextField fx:id="month" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+										<EntryTextField fx:id="note" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="18" />
 									</children>
 								</GridPane>
 								<BorderPane prefHeight="536.0" prefWidth="259.0">
