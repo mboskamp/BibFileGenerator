@@ -70,7 +70,7 @@ public class NetUtils {
 		} catch (MalformedURLException e) {
 			new ExceptionDialog(Error.URL_INVALID_ERROR, e);
 		} catch (IOException e) {
-			new ExceptionDialog(Error.ISBN_NOT_FOUND, e);
+			new ExceptionDialog(Error.NO_CONNECTION_ERROR, e, "Die folgende ISBN konnte nicht gefunden werden:" + isbn.toString() + "  Es besteht keine Internetverbindung.");
 		}
 		return ERROR;
 	}
@@ -90,7 +90,7 @@ public class NetUtils {
 		} catch (MalformedURLException e) {
 			new ExceptionDialog(Error.URL_FORMAT_ERROR, e);
 		} catch (IOException e) {
-			new ExceptionDialog(Error.DOI_NOT_FOUND, e, "Die folgende DOI konnte nicht gefunden werden: " + doi);
+			new ExceptionDialog(Error.NO_CONNECTION_ERROR, e, "Die folgende DOI konnte nicht gefunden werden: " + doi + "Es besteht keine Internetverbindung.");
 		}
 		return ERROR;
 	}
