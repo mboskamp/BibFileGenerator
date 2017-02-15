@@ -12,7 +12,7 @@
 	<center>
 		<ScrollPane maxHeight="674.0" maxWidth="590.0" minHeight="250.0" minWidth="590.0" prefHeight="674.0" prefWidth="590.0" BorderPane.alignment="CENTER">
 			<content>
-				<BorderPane maxHeight="626.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="626.0" prefWidth="587.0">
+				<BorderPane maxHeight="655.0" maxWidth="595.0" minHeight="350.0" minWidth="587.0" prefHeight="655.0" prefWidth="587.0">
 					<top>
 						<GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
 							<children>
@@ -51,7 +51,7 @@
 						</GridPane>
 					</top>
 					<center>
-						<HBox maxHeight="553.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="553.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+						<HBox maxHeight="560.0" maxWidth="550.0" minHeight="260.0" minWidth="550.0" prefHeight="560.0" prefWidth="550.0" BorderPane.alignment="CENTER">
 							<children>
 								<GridPane minHeight="300.0" prefHeight="375.0">
 									<columnConstraints>
