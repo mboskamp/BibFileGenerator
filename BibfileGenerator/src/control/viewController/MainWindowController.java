@@ -15,7 +15,9 @@ import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
 import org.jbibtex.Key;
 import org.jbibtex.ParseException;
+import org.jbibtex.StringValue;
 import org.jbibtex.TokenMgrException;
+import org.jbibtex.Value;
 
 import control.error.Error;
 import control.error.ExceptionDialog;
@@ -23,12 +25,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
@@ -40,6 +44,7 @@ import javafx.stage.FileChooser;
  */
 public class MainWindowController extends AbstractController {
 
+	private AbstractEntryController contentController;
 	private String path;
 
 	private ArrayList<Entry> entries = new ArrayList<>();
@@ -50,6 +55,9 @@ public class MainWindowController extends AbstractController {
 
 	@FXML
 	public Button removeBtn;
+	
+	@FXML
+	public BorderPane contentWrapper;
 
 	/**
 	 * Called when view is initialized.
@@ -66,6 +74,19 @@ public class MainWindowController extends AbstractController {
 		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				System.out.println("New Selection: " + newSelection.getTitle());
+				String entry = newSelection.getType();
+				try {
+					contentWrapper.getChildren().clear();
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(getClass().getResource("/view/entries/detail/" + entry + ".fxml"));
+					contentWrapper.setCenter((Node) loader.load());
+					contentController = loader.getController();
+				} catch (IllegalStateException ise){
+					System.out.println("Not implemented yet");
+				} catch (IOException e) {
+					e.printStackTrace();
+					//new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
+				}
 			}
 			removeBtn.setDisable(false);
 		});
@@ -115,12 +136,14 @@ public class MainWindowController extends AbstractController {
 	public void notifyAdd(BibTeXEntry entry) {
 		db.addObject(entry);
 		Entry e = entry.getEntry();
+		e.setType(new StringValue(entry.getType().toString()));
 		this.entries.add(e);
 
 		updateTable();
 	}
 
 	/**
+	 * TODO Doesn't work
 	 * Opens a new 'open' dialog where the user can choose to open an existing
 	 * .bib file. This file is then loaded, parsed and the containing entries
 	 * are displayed in the list.
