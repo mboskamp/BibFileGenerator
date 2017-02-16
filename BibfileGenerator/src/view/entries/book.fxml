@@ -16,7 +16,7 @@
 					<top>
 						<GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
 							<children>
-								<EntryTextField fx:id="isbn" prefHeight="40.0" prefWidth="275.0" promptText="ISBN" required="false" text="3551354022">
+								<EntryTextField fx:id="isbnSearch" prefHeight="40.0" prefWidth="275.0" promptText="ISBN" required="false" text="3551354022">
 									<opaqueInsets>
 										<Insets />
 									</opaqueInsets>

@@ -77,9 +77,6 @@ public abstract class AbstractEntryController extends AbstractController {
 	public EntryTextField note;
 
 	@FXML
-	public EntryTextField key;
-
-	@FXML
 	public EntryTextField referenceKey;
 
 	@FXML

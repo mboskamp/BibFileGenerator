@@ -33,7 +33,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 	public Button isbnSearchButton;
 
 	@FXML
-	public EntryTextField isbn;
+	public EntryTextField isbnSearch;
 
 	@FXML
 	public Label isbnError;
@@ -83,6 +83,9 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 	@FXML
 	public EntryTextField editor;
 
+	@FXML
+	private EntryTextField isbn;
+
 	private boolean validISBN = false;
 
 	private static final String ISBN_ERROR = "ISBN ungültig";
@@ -92,7 +95,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 		isbn10Label.setVisible(false);
 		isbn13Label.setVisible(false);
 
-		isbn.textProperty().addListener((observable, oldValue, newValue) -> {
+		isbnSearch.textProperty().addListener((observable, oldValue, newValue) -> {
 			System.out.println("textfield changed from " + oldValue + " to " + newValue);
 			validateISBN();
 			isbnError.setText("");
@@ -101,11 +104,11 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 
 	@FXML
 	public void searchISBN() {
-		
-		validateISBN(); //FIXME Remove after default ISBN is removed
-		
+
+		validateISBN(); // FIXME Remove after default ISBN is removed
+
 		if (validISBN) {
-			ISBN i = ISBNUtils.validateAndReturn(isbn.getText());
+			ISBN i = ISBNUtils.validateAndReturn(isbnSearch.getText());
 			String json = NetUtils.fireISBNRequest(i);
 			ArrayList<Book> books = JSONUtils.parseJSONBookResponse(json);
 			if (books != null && books.size() > 0) {
@@ -119,6 +122,11 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 				// TODO series
 				// TODO address
 
+				try {
+					isbn.setText(i.toString());
+				} catch (NullPointerException e) {
+					//Do nothing. -> Inbook
+				}
 				if (b.getImage() != null) {
 					image.setImage(SwingFXUtils.toFXImage(b.getImage(), null));
 				}
@@ -127,7 +135,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 				isbn13Label.setVisible(true);
 				isbn10.setText(ISBNUtils.formatISBN(i.getIsbn10()));
 				isbn13.setText(ISBNUtils.formatISBN(i.getIsbn13()));
-			}else{
+			} else {
 				new ExceptionDialog(Error.ISBN_NOT_FOUND, (Exception) null);
 			}
 		} else {
@@ -137,7 +145,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 
 	@FXML
 	public void validateISBN() {
-		validISBN = ISBNUtils.validateISBN(isbn.getText());
+		validISBN = ISBNUtils.validateISBN(isbnSearch.getText());
 		System.out.println(validISBN ? "ISBN valid" : "ISBN invalid");
 	}
 }
