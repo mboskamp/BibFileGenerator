@@ -6,7 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.ArticleController">
    <children>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
@@ -16,7 +15,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField">
+            <EntryTextField fx:id="author">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -30,7 +29,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField1">
+            <EntryTextField fx:id="title">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -44,7 +43,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField2">
+            <EntryTextField fx:id="journal">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -58,7 +57,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField3">
+            <EntryTextField fx:id="year">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -72,7 +71,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField4">
+            <EntryTextField fx:id="edition">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -86,7 +85,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField5">
+            <EntryTextField fx:id="reference">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -100,7 +99,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField6">
+            <EntryTextField fx:id="number">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -114,7 +113,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField7">
+            <EntryTextField fx:id="page">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -128,7 +127,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField8">
+            <EntryTextField fx:id="month">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -142,7 +141,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField9">
+            <EntryTextField fx:id="note">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -156,7 +155,7 @@
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField10">
+            <EntryTextField fx:id="key">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
