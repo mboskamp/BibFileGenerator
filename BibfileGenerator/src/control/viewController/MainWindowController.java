@@ -29,9 +29,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.FileChooser;
 
 /**
  * Controller that handles the main view window.
@@ -86,7 +87,8 @@ public class MainWindowController extends AbstractController {
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setResizable(false);
-			stage.setTitle("Add New Entry");
+			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzufügen");
+			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.setScene(new Scene(root1));
 			stage.show();
 		} catch (IOException e) {
