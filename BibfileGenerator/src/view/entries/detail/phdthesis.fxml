@@ -8,16 +8,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.viewController.PhdthesisController">
    <children>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label" maxWidth="150.0" minWidth="150.0" text="Autor*">
+            <Label fx:id="referenceKeyLabel" maxWidth="150.0" minWidth="150.0" text="Referenz*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField">
+            <EntryTextField fx:id="referenceKey">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -26,12 +26,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label1" maxWidth="150.0" minWidth="150.0" text="Titel*">
+            <Label fx:id="authorLabel" maxWidth="150.0" minWidth="150.0" text="Autor*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField1">
+            <EntryTextField fx:id="author">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -40,12 +40,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label2" maxWidth="150.0" minWidth="150.0" text="Schule*">
+            <Label fx:id="titleLabel" maxWidth="150.0" minWidth="150.0" text="Titel*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField2">
+            <EntryTextField fx:id="title">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -54,12 +54,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label3" maxWidth="150.0" minWidth="150.0" text="Jahr*">
+            <Label fx:id="schoolLabel" maxWidth="150.0" minWidth="150.0" text="Schule*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField3">
+            <EntryTextField fx:id="school">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -68,12 +68,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label4" maxWidth="150.0" minWidth="150.0" text="Referenz*">
+            <Label fx:id="yearLabel" maxWidth="150.0" minWidth="150.0" text="Jahr*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField4">
+            <EntryTextField fx:id="year">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -82,12 +82,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label5" maxWidth="150.0" minWidth="150.0" text="Typ">
+            <Label fx:id="typeLabel" maxWidth="150.0" minWidth="150.0" text="Typ">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField5">
+            <EntryTextField fx:id="type">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -96,12 +96,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label6" maxWidth="150.0" minWidth="150.0" text="Adresse">
+            <Label fx:id="addressLabel" maxWidth="150.0" minWidth="150.0" text="Adresse">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField6">
+            <EntryTextField fx:id="address">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -110,12 +110,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label7" maxWidth="150.0" minWidth="150.0" text="Monat">
+            <Label fx:id="monthLabel" maxWidth="150.0" minWidth="150.0" text="Monat">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField7">
+            <EntryTextField fx:id="month">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
@@ -124,12 +124,12 @@
       </FlowPane>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="label8" maxWidth="150.0" minWidth="150.0" text="Notiz">
+            <Label fx:id="noteLabel" maxWidth="150.0" minWidth="150.0" text="Notiz">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="entryTextField8">
+            <EntryTextField fx:id="note">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>
