@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import view.bibComponent.*?>
 <?import view.bibComponent.EntryTextField?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -15,7 +16,7 @@
 					<top>
 						<GridPane maxHeight="80.0" maxWidth="550.0" minHeight="80.0" minWidth="550.0" prefHeight="80.0" prefWidth="550.0" BorderPane.alignment="CENTER">
 							<children>
-								<EntryTextField required="false" fx:id="isbn" prefHeight="40.0" prefWidth="275.0" promptText="ISBN" text="3551354022">
+								<EntryTextField fx:id="isbnSearch" prefHeight="40.0" prefWidth="275.0" promptText="ISBN" required="false" text="3551354022">
 									<opaqueInsets>
 										<Insets />
 									</opaqueInsets>
@@ -98,13 +99,13 @@
 										<Label fx:id="noteLabel" minHeight="30.0" prefHeight="30.0" text="Notiz" GridPane.rowIndex="18" />
 
 										<EntryTextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 										<EntryTextField fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 										<EntryTextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 										<EntryTextField fx:id="booktitle" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 										<EntryTextField fx:id="publisher" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 										<EntryTextField fx:id="year" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+										<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 										<EntryTextField fx:id="editor" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 										<EntryTextField fx:id="volume" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 										<EntryTextField fx:id="number" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="false" GridPane.columnIndex="1" GridPane.rowIndex="10" />
