@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.jbibtex.BibTeXEntry;
+import org.jbibtex.Entry;
 import org.jbibtex.Key;
 import org.jbibtex.StringValue;
 import org.jbibtex.Value;
@@ -20,6 +21,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import lombok.Getter;
+import lombok.Setter;
 import view.bibComponent.EntryTextField;
 
 /**
@@ -60,9 +64,14 @@ public abstract class AbstractEntryController extends AbstractController {
 		staticFieldsMap.put("url", BibTeXEntry.KEY_URL);
 		staticFieldsMap.put("volume", BibTeXEntry.KEY_VOLUME);
 		staticFieldsMap.put("year", BibTeXEntry.KEY_YEAR);
+		staticFieldsMap.put("referenceKey", BibTeXEntry.KEY_CROSSREF);
 
 		fields = Collections.unmodifiableMap(staticFieldsMap);
 	}
+
+	@Getter
+	@Setter
+	private Boolean detail;
 
 	@FXML
 	public EntryTextField title;
@@ -119,6 +128,8 @@ public abstract class AbstractEntryController extends AbstractController {
 						values.put(key, value);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						new ExceptionDialog(Error.ILLEGAL_ACCESS_ERROR, e);
+					} catch (NullPointerException npe){
+						//Do nothing
 					}
 				}
 			}
@@ -126,6 +137,35 @@ public abstract class AbstractEntryController extends AbstractController {
 		BibTeXEntry entry = new BibTeXEntry(getEntryType(), new Key(referenceKey.getText()));
 		entry.addAllFields(values);
 		return entry;
+	}
+
+	public BibTeXEntry updateBibTeXEntry(Entry oldEntry, int index) {
+		boolean save = false;
+		Map<String, Value> values = oldEntry.getValuesMap();
+		for (Field field : getFields()) {
+			if (field.getType() == EntryTextField.class) {
+				Key key = AbstractEntryController.fields.get(field.getName());
+				if (key != null && oldEntry.getValuesMap().get(key.toString()) != null) {
+					try {
+						EntryTextField etf = ((EntryTextField) getField(key.toString()));
+						etf.setText(values.get(key.toString()).toUserString());
+						if (etf.isChanged()) {
+							save = true;
+						}
+
+					} catch (NoSuchFieldError nsfe) {
+						// Field not found. Do nothing
+					} catch (NullPointerException npe) {
+						System.out.println("Nullpointer at key: " + key.toString());
+					}
+				}
+			}
+		}
+		if (save) {
+			System.out.println("changed");
+			return saveData();
+		}
+		return null;
 	}
 
 	private List<Field> getFields() {
@@ -136,5 +176,16 @@ public abstract class AbstractEntryController extends AbstractController {
 			clazz = (Class<? extends Object>) clazz.getSuperclass();
 		} while ((clazz != AbstractController.class));
 		return fields;
+	}
+
+	private Object getField(String name) {
+		Class<?> current = this.getClass();
+		do {
+			try {
+				return current.getDeclaredField(name).get(this);
+			} catch (Exception e) {
+			}
+		} while ((current = current.getSuperclass()) != null);
+		return null;
 	}
 }

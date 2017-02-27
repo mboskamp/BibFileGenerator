@@ -11,6 +11,7 @@ import java.util.Map;
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.BibTeXFormatter;
+import org.jbibtex.BibTeXObject;
 import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
 import org.jbibtex.Key;
@@ -29,10 +30,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
@@ -57,7 +60,7 @@ public class MainWindowController extends AbstractController {
 	public Button removeBtn;
 	
 	@FXML
-	public BorderPane contentWrapper;
+	public ScrollPane contentWrapper;
 
 	/**
 	 * Called when view is initialized.
@@ -71,22 +74,11 @@ public class MainWindowController extends AbstractController {
 			table.getColumns().add(column);
 		}
 
-		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
-				System.out.println("New Selection: " + newSelection.getTitle());
-				String entry = newSelection.getType();
-				try {
-					contentWrapper.getChildren().clear();
-					FXMLLoader loader = new FXMLLoader();
-					loader.setLocation(getClass().getResource("/view/entries/detail/" + entry + ".fxml"));
-					contentWrapper.setCenter((Node) loader.load());
-					contentController = loader.getController();
-				} catch (IllegalStateException ise){
-					System.out.println("Not implemented yet");
-				} catch (IOException e) {
-					e.printStackTrace();
-					//new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
-				}
+				System.out.println("New Selection: " + newSelection.intValue());
+				saveDetailView(newSelection.intValue(), oldSelection.intValue());
+				updateDetailView(newSelection.intValue());
 			}
 			removeBtn.setDisable(false);
 		});
@@ -163,11 +155,10 @@ public class MainWindowController extends AbstractController {
 			parser = new BibTeXParser();
 			db = parser.parse(new FileReader(new File(path)));
 
-			for (Map.Entry<Key, BibTeXEntry> entry : db.getEntries().entrySet()) {
-				this.entries.add(entry.getValue().getEntry());
+			for (BibTeXObject entry : db.getObjects()) {
+				this.entries.add(((BibTeXEntry)entry).getEntry());
 			}
 
-			updateColumns();
 			updateTable();
 		} catch (TokenMgrException | ParseException e) {
 			new ExceptionDialog(Error.INTERNAL_ERROR, e);
@@ -221,14 +212,37 @@ public class MainWindowController extends AbstractController {
 		System.out.println("Merge");
 	}
 
-	private void updateColumns() {
-	}
-
 	/**
 	 * Updates the table of entries.
 	 */
 	private void updateTable() {
 		ObservableList<Entry> entries = FXCollections.observableArrayList(this.entries);
 		table.setItems(entries);
+	}
+	
+	private void saveDetailView(int index, int oldIndex){
+		if(contentController != null){
+			entries.set(oldIndex, contentController.saveData().getEntry());
+			updateTable();
+		}
+	}
+	
+	private void updateDetailView(int index){
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/entries/detail/" + entries.get(index).getType() + ".fxml"));
+			contentWrapper.setContent((Node) loader.load());
+			contentController = loader.getController();
+			contentController.setFrom(this);
+			
+			BibTeXEntry entry = contentController.updateBibTeXEntry(entries.get(index), index);
+			if(entry != null){
+				entries.set(index, entry.getEntry());
+			}
+
+		} catch (IllegalStateException ise){
+		} catch (IOException e) {
+			new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
+		}
 	}
 }
