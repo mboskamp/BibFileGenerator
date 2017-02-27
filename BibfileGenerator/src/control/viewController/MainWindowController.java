@@ -6,14 +6,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.BibTeXFormatter;
+import org.jbibtex.BibTeXObject;
 import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
-import org.jbibtex.Key;
 import org.jbibtex.ParseException;
 import org.jbibtex.TokenMgrException;
 
@@ -135,15 +134,21 @@ public class MainWindowController extends AbstractController {
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showOpenDialog(table.getScene().getWindow());
-		this.path = file.getAbsolutePath();
+		try {
+			this.path = file.getAbsolutePath();
+		} catch (NullPointerException e) {
+			System.out.println("Beim Öffnen wurde abbrechen geddrückt");
+			return;
+		}
 
 		BibTeXParser parser;
 		try {
 			parser = new BibTeXParser();
 			db = parser.parse(new FileReader(new File(path)));
 
-			for (Map.Entry<Key, BibTeXEntry> entry : db.getEntries().entrySet()) {
-				this.entries.add(entry.getValue().getEntry());
+			this.entries.clear();
+			for (BibTeXObject entry : db.getObjects()) {
+				this.entries.add(((BibTeXEntry) entry).getEntry());
 			}
 
 			updateColumns();
