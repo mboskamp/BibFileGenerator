@@ -34,7 +34,6 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="ANY" />
                            </accelerator></MenuItem>
-                        <MenuItem disable="true" mnemonicParsing="false" text="Exportieren" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Bearbeiten">
@@ -56,7 +55,6 @@
               <items>
                 <Button mnemonicParsing="false" onAction="#save" text="Save" />
                   <Button mnemonicParsing="false" onAction="#open" text="Load" />
-                  <Button disable="true" mnemonicParsing="false" text="Export" />
                   <Button mnemonicParsing="false" onAction="#add" text="+" />
                   <Button fx:id="removeBtn" disable="true" mnemonicParsing="false" onAction="#remove" text="-" />
               </items>
