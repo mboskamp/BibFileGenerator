@@ -39,7 +39,7 @@
                 <Menu mnemonicParsing="false" text="Bearbeiten">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#add" text="Hinzufügen" />
-                    <MenuItem disable="true" mnemonicParsing="false" text="Löschen" />
+                    <MenuItem fx:id="removeMenu" disable="true" mnemonicParsing="false" onAction="#remove" text="Löschen" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">

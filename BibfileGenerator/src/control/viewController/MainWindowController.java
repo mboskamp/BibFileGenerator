@@ -25,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,6 +51,9 @@ public class MainWindowController extends AbstractController {
 
 	@FXML
 	public Button removeBtn;
+	
+	@FXML
+	public MenuItem removeMenu;
 
 	/**
 	 * Called when view is initialized.
@@ -68,6 +72,7 @@ public class MainWindowController extends AbstractController {
 				System.out.println("New Selection: " + newSelection.getTitle());
 			}
 			removeBtn.setDisable(false);
+			removeMenu.setDisable(false);
 		});
 	}
 
@@ -102,6 +107,7 @@ public class MainWindowController extends AbstractController {
 		updateTable();
 		if (table.getSelectionModel().getSelectedItem() == null){
 			removeBtn.setDisable(true);
+			removeMenu.setDisable(true);
 		}
 	}
 
