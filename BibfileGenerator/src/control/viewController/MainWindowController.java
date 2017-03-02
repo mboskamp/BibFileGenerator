@@ -134,7 +134,7 @@ public class MainWindowController extends AbstractController {
 	 */
 	public void open() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open...");
+		fileChooser.setTitle("Öffnen");
 
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("BibFiles (*.bib)", "*.bib");
 		fileChooser.getExtensionFilters().add(extFilter);
@@ -192,7 +192,7 @@ public class MainWindowController extends AbstractController {
 	 */
 	public void saveAs() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Save as...");
+		fileChooser.setTitle("Speichern als...");
 
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("BibFiles (*.bib)", "*.bib");
 		fileChooser.getExtensionFilters().add(extFilter);
