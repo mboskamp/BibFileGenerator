@@ -198,7 +198,12 @@ public class MainWindowController extends AbstractController {
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showSaveDialog(table.getScene().getWindow());
-		this.path = file.getAbsolutePath();
+		try {
+			this.path = file.getAbsolutePath();
+		} catch (NullPointerException e) {
+			System.out.println("Beim Speichern wurde abbrechen geddrückt");
+			return;
+		}
 		if (path != null) {
 			save();
 		}
