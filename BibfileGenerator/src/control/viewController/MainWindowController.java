@@ -51,7 +51,7 @@ public class MainWindowController extends AbstractController {
 
 	@FXML
 	public Button removeBtn;
-	
+
 	@FXML
 	public MenuItem removeMenu;
 
@@ -60,11 +60,18 @@ public class MainWindowController extends AbstractController {
 	 */
 	@FXML
 	public void initialize() {
+		int i = 0;
 		for (String s : BibTeXEntry.getKeysAsString()) {
 			TableColumn<Entry, String> column = new TableColumn<Entry, String>();
 			column.setText(s);
 			column.setCellValueFactory(new PropertyValueFactory<Entry, String>(s));
 			table.getColumns().add(column);
+			// damit alle Spalten angezeigt werden, dieses IF auskommentieren
+			// 2 = Autor, 5 = Referenz, 21 = Titel, 25 = Jahr
+			if (!(i == 2 || i == 5 || i == 21 || i == 25)) {
+				table.getColumns().get(i).setVisible(false);
+			}
+			i++;
 		}
 
 		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -105,7 +112,7 @@ public class MainWindowController extends AbstractController {
 				+ table.getSelectionModel().selectedIndexProperty().intValue());
 		entries.remove(table.getSelectionModel().selectedIndexProperty().intValue());
 		updateTable();
-		if (table.getSelectionModel().getSelectedItem() == null){
+		if (table.getSelectionModel().getSelectedItem() == null) {
 			removeBtn.setDisable(true);
 			removeMenu.setDisable(true);
 		}

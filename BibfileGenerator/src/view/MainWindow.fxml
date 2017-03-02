@@ -67,7 +67,7 @@
         <tabs>
           <Tab text="BIB-File Name">
                <content>
-                  <ScrollPane>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <TableView fx:id="table">
                            <columnResizePolicy>
