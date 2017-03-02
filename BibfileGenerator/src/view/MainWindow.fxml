@@ -53,8 +53,8 @@
          <center>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" onAction="#save" text="Save" />
-                  <Button mnemonicParsing="false" onAction="#open" text="Load" />
+                <Button mnemonicParsing="false" onAction="#save" text="Speichern" />
+                  <Button mnemonicParsing="false" onAction="#open" text="Laden" />
                   <Button mnemonicParsing="false" onAction="#add" text="+" />
                   <Button fx:id="removeBtn" disable="true" mnemonicParsing="false" onAction="#remove" text="-" />
               </items>
