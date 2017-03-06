@@ -101,25 +101,27 @@ public abstract class AbstractEntryController extends AbstractController {
 			if (field.getType() == EntryTextField.class) {
 				Key key = AbstractEntryController.fields.get(field.getName());
 				if (key != null) {
+					EntryTextField textField = null;
 					try {
-						StringValue value = new StringValue(((EntryTextField) field.get(this)).getText());
-						if ((value.getString() != null) && (value.getString().equals("") || value.getString().equals(null)) && ((EntryTextField) field.get(this)).isRequired() && !isCorrect) {
-							Alert alert = new Alert(AlertType.CONFIRMATION);
-							alert.setTitle("Pflichtfeldprüfung");
-							alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
-							alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
-							Optional<ButtonType> result = alert.showAndWait();
-							if (result.get() == ButtonType.OK){
-								isCorrect = true;
-							    continue;
-							} else {
-							    return null;
-							}
-						}
-						values.put(key, value);
+						textField = (EntryTextField) field.get(this);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						new ExceptionDialog(Error.ILLEGAL_ACCESS_ERROR, e);
 					}
+					StringValue value = new StringValue(textField.getText());
+					if ((value.getString() != null) && (value.getString().equals("") || value.getString().equals(null)) && textField.isRequired() && !isCorrect) {
+						Alert alert = new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("Pflichtfeldprüfung");
+						alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
+						alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
+						Optional<ButtonType> result = alert.showAndWait();
+						if (result.get() == ButtonType.OK) {
+							isCorrect = true;
+							continue;
+						} else {
+							return null;
+						}
+					}
+					values.put(key, value.getString() == null ? new StringValue("") : value);
 				}
 			}
 		}
