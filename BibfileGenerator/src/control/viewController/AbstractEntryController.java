@@ -21,7 +21,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
 import lombok.Getter;
 import lombok.Setter;
 import view.bibComponent.EntryTextField;
