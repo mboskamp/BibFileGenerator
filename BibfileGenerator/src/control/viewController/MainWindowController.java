@@ -34,6 +34,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
@@ -50,7 +51,7 @@ public class MainWindowController extends AbstractController {
 	private AbstractEntryController contentController;
 	private String path;
 
-	private ArrayList<Entry> entries = new ArrayList<>();
+	private ArrayList<BibTeXEntry> entries = new ArrayList<>();
 	private BibTeXDatabase db = new BibTeXDatabase();
 
 	@FXML
@@ -75,9 +76,11 @@ public class MainWindowController extends AbstractController {
 		}
 
 		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
-			if (newSelection != null) {
+			if (newSelection != null && newSelection.intValue() != -1) {
 				System.out.println("New Selection: " + newSelection.intValue());
-				saveDetailView(newSelection.intValue(), oldSelection.intValue());
+				if(oldSelection.intValue() != -1){
+					saveDetailView(newSelection.intValue(), oldSelection.intValue());
+				}
 				updateDetailView(newSelection.intValue());
 			}
 			removeBtn.setDisable(false);
@@ -126,10 +129,9 @@ public class MainWindowController extends AbstractController {
 	 * @param key
 	 */
 	public void notifyAdd(BibTeXEntry entry) {
-		db.addObject(entry);
-		Entry e = entry.getEntry();
-		e.setType(new StringValue(entry.getType().toString()));
-		this.entries.add(e);
+		//db.addObject(entry);
+//		entry.setType(new StringValue(entry.getType().toString()));
+		this.entries.add(entry);
 
 		updateTable();
 	}
@@ -156,7 +158,7 @@ public class MainWindowController extends AbstractController {
 			db = parser.parse(new FileReader(new File(path)));
 
 			for (BibTeXObject entry : db.getObjects()) {
-				this.entries.add(((BibTeXEntry)entry).getEntry());
+				this.entries.add(((BibTeXEntry)entry));
 			}
 
 			updateTable();
@@ -173,10 +175,16 @@ public class MainWindowController extends AbstractController {
 	 * saved) the {@link #saveAs()} method is called.
 	 */
 	public void save() {
+		db = new BibTeXDatabase();
 		System.out.println(path == null ? "null" : path);
 		if (path != null) {
 			BibTeXFormatter formatter = new BibTeXFormatter();
 			try {
+				for (BibTeXEntry entry : entries) {
+					db.addObject(entry);
+				}
+				
+				
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
 				new ExceptionDialog(Error.FORMATTING_ERROR, e);
@@ -216,14 +224,17 @@ public class MainWindowController extends AbstractController {
 	 * Updates the table of entries.
 	 */
 	private void updateTable() {
-		ObservableList<Entry> entries = FXCollections.observableArrayList(this.entries);
+		ArrayList<Entry> entryList = new ArrayList<>();
+		for (BibTeXEntry bibTeXEntry : entries) {
+			entryList.add(bibTeXEntry.getEntry());
+		}
+		ObservableList<Entry> entries = FXCollections.observableArrayList(entryList);
 		table.setItems(entries);
 	}
 	
 	private void saveDetailView(int index, int oldIndex){
 		if(contentController != null){
-			entries.set(oldIndex, contentController.saveData().getEntry());
-			updateTable();
+			entries.set(oldIndex, contentController.saveData());
 		}
 	}
 	
@@ -237,8 +248,9 @@ public class MainWindowController extends AbstractController {
 			
 			BibTeXEntry entry = contentController.updateBibTeXEntry(entries.get(index), index);
 			if(entry != null){
-				entries.set(index, entry.getEntry());
+				entries.set(index, entry);
 			}
+			updateTable();
 
 		} catch (IllegalStateException ise){
 		} catch (IOException e) {

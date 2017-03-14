@@ -12,12 +12,12 @@
    <children>
       <FlowPane minWidth="-Infinity" prefHeight="39.0" prefWidth="365.0">
          <children>
-            <Label fx:id="referenceKeyLabel" maxWidth="150.0" minWidth="150.0" text="Referenz*">
+            <Label fx:id="crossrefLabel" maxWidth="150.0" minWidth="150.0" text="Referenz*">
                <FlowPane.margin>
                   <Insets left="10.0" right="10.0" top="6.0" />
                </FlowPane.margin>
             </Label>
-            <EntryTextField fx:id="referenceKey">
+            <EntryTextField fx:id="crossref">
                <FlowPane.margin>
                   <Insets top="6.0" />
                </FlowPane.margin>

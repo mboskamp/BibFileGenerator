@@ -64,7 +64,7 @@ public abstract class AbstractEntryController extends AbstractController {
 		staticFieldsMap.put("url", BibTeXEntry.KEY_URL);
 		staticFieldsMap.put("volume", BibTeXEntry.KEY_VOLUME);
 		staticFieldsMap.put("year", BibTeXEntry.KEY_YEAR);
-		staticFieldsMap.put("referenceKey", BibTeXEntry.KEY_CROSSREF);
+		staticFieldsMap.put("crossref", BibTeXEntry.KEY_CROSSREF);
 
 		fields = Collections.unmodifiableMap(staticFieldsMap);
 	}
@@ -86,7 +86,7 @@ public abstract class AbstractEntryController extends AbstractController {
 	public EntryTextField note;
 
 	@FXML
-	public EntryTextField referenceKey;
+	public EntryTextField crossref;
 
 	@FXML
 	public abstract void initialize();
@@ -134,18 +134,18 @@ public abstract class AbstractEntryController extends AbstractController {
 				}
 			}
 		}
-		BibTeXEntry entry = new BibTeXEntry(getEntryType(), new Key(referenceKey.getText()));
+		BibTeXEntry entry = new BibTeXEntry(getEntryType(), new Key(crossref.getText()));
 		entry.addAllFields(values);
 		return entry;
 	}
 
-	public BibTeXEntry updateBibTeXEntry(Entry oldEntry, int index) {
+	public BibTeXEntry updateBibTeXEntry(BibTeXEntry bibTeXEntry, int index) {
 		boolean save = false;
-		Map<String, Value> values = oldEntry.getValuesMap();
+		Map<String, Value> values = bibTeXEntry.getEntry().getValuesMap();
 		for (Field field : getFields()) {
 			if (field.getType() == EntryTextField.class) {
 				Key key = AbstractEntryController.fields.get(field.getName());
-				if (key != null && oldEntry.getValuesMap().get(key.toString()) != null) {
+				if (key != null && bibTeXEntry.getEntry().getValuesMap().get(key.toString()) != null) {
 					try {
 						EntryTextField etf = ((EntryTextField) getField(key.toString()));
 						etf.setText(values.get(key.toString()).toUserString());
