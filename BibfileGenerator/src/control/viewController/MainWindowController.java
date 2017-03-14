@@ -95,7 +95,7 @@ public class MainWindowController extends AbstractController {
 			if (newSelection != null && newSelection.intValue() != -1) {
 				System.out.println("New Selection: " + newSelection.intValue());
 				if(oldSelection.intValue() != -1){
-					saveDetailView(newSelection.intValue(), oldSelection.intValue());
+					saveDetailView(oldSelection.intValue());
 				}
 				updateDetailView(newSelection.intValue());
 			}
@@ -201,6 +201,10 @@ public class MainWindowController extends AbstractController {
 	 * saved) the {@link #saveAs()} method is called.
 	 */
 	public void save() {
+		saveDetailView(table.getSelectionModel().getSelectedIndex());
+		updateDetailView(table.getSelectionModel().getSelectedIndex());
+		updateTable();
+		
 		db = new BibTeXDatabase();
 		System.out.println(path == null ? "null" : path);
 		if (path != null) {
@@ -263,7 +267,7 @@ public class MainWindowController extends AbstractController {
 		table.setItems(entries);
 	}
 	
-	private void saveDetailView(int index, int oldIndex){
+	private void saveDetailView(int oldIndex){
 		if(contentController != null){
 			entries.set(oldIndex, contentController.saveData());
 		}

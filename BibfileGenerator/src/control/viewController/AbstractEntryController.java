@@ -112,26 +112,26 @@ public abstract class AbstractEntryController extends AbstractController {
 					EntryTextField textField = null;
 					try {
 						textField = (EntryTextField) field.get(this);
+						StringValue value = new StringValue(textField.getText());
+						if ((value.getString() != null) && (value.getString().equals("") || value.getString().equals(null)) && textField.isRequired() && !isCorrect) {
+							Alert alert = new Alert(AlertType.CONFIRMATION);
+							alert.setTitle("Pflichtfeldprüfung");
+							alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
+							alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
+							Optional<ButtonType> result = alert.showAndWait();
+							if (result.get() == ButtonType.OK) {
+								isCorrect = true;
+								continue;
+							} else {
+								return null;
+							}
+						}
+						values.put(key, value.getString() == null ? new StringValue("") : value);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						new ExceptionDialog(Error.ILLEGAL_ACCESS_ERROR, e);
 					} catch (NullPointerException npe){
 						//Do nothing
 					}
-					StringValue value = new StringValue(textField.getText());
-					if ((value.getString() != null) && (value.getString().equals("") || value.getString().equals(null)) && textField.isRequired() && !isCorrect) {
-						Alert alert = new Alert(AlertType.CONFIRMATION);
-						alert.setTitle("Pflichtfeldprüfung");
-						alert.setHeaderText("Es wurde nicht alle Pflichtfelder ausgefüllt!");
-						alert.setContentText("Es wurden nicht alle Pflichtfelder ausgefüllt. Es kann trotzdem mit der *.bib-Datei gearbeitet werden.");
-						Optional<ButtonType> result = alert.showAndWait();
-						if (result.get() == ButtonType.OK) {
-							isCorrect = true;
-							continue;
-						} else {
-							return null;
-						}
-					}
-					values.put(key, value.getString() == null ? new StringValue("") : value);
 				}
 			}
 		}
