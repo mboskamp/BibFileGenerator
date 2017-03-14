@@ -92,14 +92,18 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 
 	@Override
 	public void initialize() {
-		isbn10Label.setVisible(false);
-		isbn13Label.setVisible(false);
-
-		isbnSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-			System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			validateISBN();
-			isbnError.setText("");
-		});
+		try {
+			isbn10Label.setVisible(false);
+			isbn13Label.setVisible(false);
+			
+			isbnSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+				System.out.println("textfield changed from " + oldValue + " to " + newValue);
+				validateISBN();
+				isbnError.setText("");
+			});
+		} catch (NullPointerException e) {
+			//Detail View Mode -> Do nothing
+		}
 	}
 
 	@FXML
@@ -125,7 +129,7 @@ public abstract class AbstractISBNController extends AbstractPrintEntryControlle
 				try {
 					isbn.setText(i.toString());
 				} catch (NullPointerException e) {
-					//Do nothing. -> Inbook
+					// Do nothing. -> Inbook
 				}
 				if (b.getImage() != null) {
 					image.setImage(SwingFXUtils.toFXImage(b.getImage(), null));

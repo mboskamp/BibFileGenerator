@@ -14,7 +14,9 @@ import org.jbibtex.BibTeXObject;
 import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
 import org.jbibtex.ParseException;
+import org.jbibtex.StringValue;
 import org.jbibtex.TokenMgrException;
+import org.jbibtex.Value;
 
 import control.error.Error;
 import control.error.ExceptionDialog;
@@ -22,15 +24,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -41,9 +54,10 @@ import javafx.stage.Stage;
  */
 public class MainWindowController extends AbstractController {
 
+	private AbstractEntryController contentController;
 	private String path;
 
-	private ArrayList<Entry> entries = new ArrayList<>();
+	private ArrayList<BibTeXEntry> entries = new ArrayList<>();
 	private BibTeXDatabase db = new BibTeXDatabase();
 
 	@FXML
@@ -51,6 +65,9 @@ public class MainWindowController extends AbstractController {
 
 	@FXML
 	public Button removeBtn;
+	
+	@FXML
+	public ScrollPane contentWrapper;
 
 	@FXML
 	public MenuItem removeMenu;
@@ -74,9 +91,13 @@ public class MainWindowController extends AbstractController {
 			i++;
 		}
 
-		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-			if (newSelection != null) {
-				System.out.println("New Selection: " + newSelection.getTitle());
+		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (newSelection != null && newSelection.intValue() != -1) {
+				System.out.println("New Selection: " + newSelection.intValue());
+				if(oldSelection.intValue() != -1){
+					saveDetailView(newSelection.intValue(), oldSelection.intValue());
+				}
+				updateDetailView(newSelection.intValue());
 			}
 			removeBtn.setDisable(false);
 			removeMenu.setDisable(false);
@@ -127,14 +148,15 @@ public class MainWindowController extends AbstractController {
 	 * @param key
 	 */
 	public void notifyAdd(BibTeXEntry entry) {
-		db.addObject(entry);
-		Entry e = entry.getEntry();
-		this.entries.add(e);
+		//db.addObject(entry);
+//		entry.setType(new StringValue(entry.getType().toString()));
+		this.entries.add(entry);
 
 		updateTable();
 	}
 
 	/**
+	 * TODO Doesn't work
 	 * Opens a new 'open' dialog where the user can choose to open an existing
 	 * .bib file. This file is then loaded, parsed and the containing entries
 	 * are displayed in the list.
@@ -159,12 +181,12 @@ public class MainWindowController extends AbstractController {
 			parser = new BibTeXParser();
 			db = parser.parse(new FileReader(new File(path)));
 
-			this.entries.clear();
+      this.entries.clear();
 			for (BibTeXObject entry : db.getObjects()) {
-				this.entries.add(((BibTeXEntry) entry).getEntry());
+				this.entries.add(((BibTeXEntry)entry));
+
 			}
 
-			updateColumns();
 			updateTable();
 		} catch (TokenMgrException | ParseException e) {
 			new ExceptionDialog(Error.INTERNAL_ERROR, e);
@@ -179,10 +201,16 @@ public class MainWindowController extends AbstractController {
 	 * saved) the {@link #saveAs()} method is called.
 	 */
 	public void save() {
+		db = new BibTeXDatabase();
 		System.out.println(path == null ? "null" : path);
 		if (path != null) {
 			BibTeXFormatter formatter = new BibTeXFormatter();
 			try {
+				for (BibTeXEntry entry : entries) {
+					db.addObject(entry);
+				}
+				
+				
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
 				new ExceptionDialog(Error.FORMATTING_ERROR, e);
@@ -223,14 +251,41 @@ public class MainWindowController extends AbstractController {
 		System.out.println("Merge");
 	}
 
-	private void updateColumns() {
-	}
-
 	/**
 	 * Updates the table of entries.
 	 */
 	private void updateTable() {
-		ObservableList<Entry> entries = FXCollections.observableArrayList(this.entries);
+		ArrayList<Entry> entryList = new ArrayList<>();
+		for (BibTeXEntry bibTeXEntry : entries) {
+			entryList.add(bibTeXEntry.getEntry());
+		}
+		ObservableList<Entry> entries = FXCollections.observableArrayList(entryList);
 		table.setItems(entries);
+	}
+	
+	private void saveDetailView(int index, int oldIndex){
+		if(contentController != null){
+			entries.set(oldIndex, contentController.saveData());
+		}
+	}
+	
+	private void updateDetailView(int index){
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/entries/detail/" + entries.get(index).getType() + ".fxml"));
+			contentWrapper.setContent((Node) loader.load());
+			contentController = loader.getController();
+			contentController.setFrom(this);
+			
+			BibTeXEntry entry = contentController.updateBibTeXEntry(entries.get(index), index);
+			if(entry != null){
+				entries.set(index, entry);
+			}
+			updateTable();
+
+		} catch (IllegalStateException ise){
+		} catch (IOException e) {
+			new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
+		}
 	}
 }

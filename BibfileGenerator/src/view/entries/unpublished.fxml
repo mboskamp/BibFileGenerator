@@ -33,7 +33,7 @@
 									<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 								 </rowConstraints>
 								 <children>
-									<Label fx:id="referenceKeyLabel" minHeight="30.0" prefHeight="30.0" text="Referenz *" GridPane.rowIndex="0" />
+									<Label fx:id="crossrefLabel" minHeight="30.0" prefHeight="30.0" text="Referenz *" GridPane.rowIndex="0" />
 									<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="1" />
 									<Label fx:id="authorLabel" minHeight="30.0" prefHeight="30.0" text="Autor *" GridPane.rowIndex="2" />
 									<Label fx:id="titleLabel" minHeight="30.0" prefHeight="30.0" text="Titel *" GridPane.rowIndex="3" />
@@ -42,7 +42,7 @@
 									<Label fx:id="monthLabel" minHeight="30.0" prefHeight="30.0" text="Monat" GridPane.rowIndex="6" />
 									<Label fx:id="yearLabel" minHeight="30.0" prefHeight="30.0" text="Jahr" GridPane.rowIndex="7" />
 
-									<EntryTextField fx:id="referenceKey" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+									<EntryTextField fx:id="crossref" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 									<Separator minHeight="10.0" prefHeight="10.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 									<EntryTextField fx:id="author" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 									<EntryTextField fx:id="title" minHeight="30.0" minWidth="190.0" prefHeight="30.0" prefWidth="190.0" required="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
