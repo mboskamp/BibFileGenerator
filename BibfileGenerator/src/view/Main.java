@@ -2,9 +2,8 @@ package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -25,12 +24,12 @@ public class Main extends Application {
 	 */
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("view/MainWindow.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/MainWindow.fxml"));
 			Scene scene = new Scene(root, 700, 500);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("BibFileGenerator");
-			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(APPLICATION_ICON_PATH)));
+			//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(APPLICATION_ICON_PATH)));
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

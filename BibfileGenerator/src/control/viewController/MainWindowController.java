@@ -34,15 +34,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 
 import javafx.stage.Modality;
@@ -95,15 +88,10 @@ public class MainWindowController extends AbstractController {
 		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null && newSelection.intValue() != -1) {
 				System.out.println("New Selection: " + newSelection.intValue());
-				Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-						if (oldSelection.intValue() != -1) {
-							saveDetailView(oldSelection.intValue());
-						}
-						updateDetailView(newSelection.intValue());
-					}
-				});
+				if (oldSelection.intValue() != -1) {
+					saveDetailView(oldSelection.intValue());
+				}
+				updateDetailView(newSelection.intValue());
 
 			}
 			removeBtn.setDisable(false);
@@ -127,7 +115,8 @@ public class MainWindowController extends AbstractController {
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setResizable(false);
 			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzufügen");
-			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
+			// stage.getIcons().add(new
+			// Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.setScene(new Scene(root1));
 			stage.show();
 		} catch (IOException e) {
@@ -163,9 +152,9 @@ public class MainWindowController extends AbstractController {
 	}
 
 	/**
-	 * TODO Doesn't work Opens a new 'open' dialog where the user can choose to
-	 * open an existing .bib file. This file is then loaded, parsed and the
-	 * containing entries are displayed in the list.
+	 * Opens a new 'open' dialog where the user can choose to open an existing
+	 * .bib file. This file is then loaded, parsed and the containing entries
+	 * are displayed in the list.
 	 */
 	public void open() {
 		FileChooser fileChooser = new FileChooser();
