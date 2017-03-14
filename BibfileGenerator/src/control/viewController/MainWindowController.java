@@ -20,6 +20,7 @@ import org.jbibtex.Value;
 
 import control.error.Error;
 import control.error.ExceptionDialog;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -65,7 +66,7 @@ public class MainWindowController extends AbstractController {
 
 	@FXML
 	public Button removeBtn;
-	
+
 	@FXML
 	public ScrollPane contentWrapper;
 
@@ -94,10 +95,16 @@ public class MainWindowController extends AbstractController {
 		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null && newSelection.intValue() != -1) {
 				System.out.println("New Selection: " + newSelection.intValue());
-				if(oldSelection.intValue() != -1){
-					saveDetailView(oldSelection.intValue());
-				}
-				updateDetailView(newSelection.intValue());
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						if (oldSelection.intValue() != -1) {
+							saveDetailView(oldSelection.intValue());
+						}
+						updateDetailView(newSelection.intValue());
+					}
+				});
+
 			}
 			removeBtn.setDisable(false);
 			removeMenu.setDisable(false);
@@ -148,18 +155,17 @@ public class MainWindowController extends AbstractController {
 	 * @param key
 	 */
 	public void notifyAdd(BibTeXEntry entry) {
-		//db.addObject(entry);
-//		entry.setType(new StringValue(entry.getType().toString()));
+		// db.addObject(entry);
+		// entry.setType(new StringValue(entry.getType().toString()));
 		this.entries.add(entry);
 
 		updateTable();
 	}
 
 	/**
-	 * TODO Doesn't work
-	 * Opens a new 'open' dialog where the user can choose to open an existing
-	 * .bib file. This file is then loaded, parsed and the containing entries
-	 * are displayed in the list.
+	 * TODO Doesn't work Opens a new 'open' dialog where the user can choose to
+	 * open an existing .bib file. This file is then loaded, parsed and the
+	 * containing entries are displayed in the list.
 	 */
 	public void open() {
 		FileChooser fileChooser = new FileChooser();
@@ -181,9 +187,9 @@ public class MainWindowController extends AbstractController {
 			parser = new BibTeXParser();
 			db = parser.parse(new FileReader(new File(path)));
 
-      this.entries.clear();
+			this.entries.clear();
 			for (BibTeXObject entry : db.getObjects()) {
-				this.entries.add(((BibTeXEntry)entry));
+				this.entries.add(((BibTeXEntry) entry));
 
 			}
 
@@ -204,7 +210,7 @@ public class MainWindowController extends AbstractController {
 		saveDetailView(table.getSelectionModel().getSelectedIndex());
 		updateDetailView(table.getSelectionModel().getSelectedIndex());
 		updateTable();
-		
+
 		db = new BibTeXDatabase();
 		System.out.println(path == null ? "null" : path);
 		if (path != null) {
@@ -213,8 +219,7 @@ public class MainWindowController extends AbstractController {
 				for (BibTeXEntry entry : entries) {
 					db.addObject(entry);
 				}
-				
-				
+
 				formatter.format(db, new FileWriter(new File(path)));
 			} catch (IOException e) {
 				new ExceptionDialog(Error.FORMATTING_ERROR, e);
@@ -266,28 +271,29 @@ public class MainWindowController extends AbstractController {
 		ObservableList<Entry> entries = FXCollections.observableArrayList(entryList);
 		table.setItems(entries);
 	}
-	
-	private void saveDetailView(int oldIndex){
-		if(contentController != null){
+
+	private void saveDetailView(int oldIndex) {
+		if (contentController != null) {
 			entries.set(oldIndex, contentController.saveData());
 		}
 	}
-	
-	private void updateDetailView(int index){
+
+	private void updateDetailView(int index) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/entries/detail/" + entries.get(index).getType() + ".fxml"));
+			loader.setLocation(
+					getClass().getResource("/view/entries/detail/" + entries.get(index).getType() + ".fxml"));
 			contentWrapper.setContent((Node) loader.load());
 			contentController = loader.getController();
 			contentController.setFrom(this);
-			
+
 			BibTeXEntry entry = contentController.updateBibTeXEntry(entries.get(index), index);
-			if(entry != null){
+			if (entry != null) {
 				entries.set(index, entry);
 			}
 			updateTable();
 
-		} catch (IllegalStateException ise){
+		} catch (IllegalStateException ise) {
 		} catch (IOException e) {
 			new ExceptionDialog(Error.VIEW_LOAD_ERROR, e);
 		}
