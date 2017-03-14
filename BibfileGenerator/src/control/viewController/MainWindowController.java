@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
@@ -14,7 +13,6 @@ import org.jbibtex.BibTeXFormatter;
 import org.jbibtex.BibTeXObject;
 import org.jbibtex.BibTeXParser;
 import org.jbibtex.Entry;
-import org.jbibtex.Key;
 import org.jbibtex.ParseException;
 import org.jbibtex.StringValue;
 import org.jbibtex.TokenMgrException;
@@ -30,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,9 +36,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
+
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.FileChooser;
 
 /**
  * Controller that handles the main view window.
@@ -63,16 +69,26 @@ public class MainWindowController extends AbstractController {
 	@FXML
 	public ScrollPane contentWrapper;
 
+	@FXML
+	public MenuItem removeMenu;
+
 	/**
 	 * Called when view is initialized.
 	 */
 	@FXML
 	public void initialize() {
+		int i = 0;
 		for (String s : BibTeXEntry.getKeysAsString()) {
 			TableColumn<Entry, String> column = new TableColumn<Entry, String>();
 			column.setText(s);
 			column.setCellValueFactory(new PropertyValueFactory<Entry, String>(s));
 			table.getColumns().add(column);
+			// damit alle Spalten angezeigt werden, dieses IF auskommentieren
+			// 2 = Autor, 5 = Referenz, 21 = Titel, 25 = Jahr
+			if (!(i == 2 || i == 5 || i == 21 || i == 25)) {
+				table.getColumns().get(i).setVisible(false);
+			}
+			i++;
 		}
 
 		table.getSelectionModel().selectedIndexProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -84,6 +100,7 @@ public class MainWindowController extends AbstractController {
 				updateDetailView(newSelection.intValue());
 			}
 			removeBtn.setDisable(false);
+			removeMenu.setDisable(false);
 		});
 	}
 
@@ -102,7 +119,8 @@ public class MainWindowController extends AbstractController {
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setResizable(false);
-			stage.setTitle("Add New Entry");
+			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzufügen");
+			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.setScene(new Scene(root1));
 			stage.show();
 		} catch (IOException e) {
@@ -115,8 +133,9 @@ public class MainWindowController extends AbstractController {
 				+ table.getSelectionModel().selectedIndexProperty().intValue());
 		entries.remove(table.getSelectionModel().selectedIndexProperty().intValue());
 		updateTable();
-		if (table.getSelectionModel().getSelectedItem() == null){
+		if (table.getSelectionModel().getSelectedItem() == null) {
 			removeBtn.setDisable(true);
+			removeMenu.setDisable(true);
 		}
 	}
 
@@ -144,21 +163,28 @@ public class MainWindowController extends AbstractController {
 	 */
 	public void open() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open...");
+		fileChooser.setTitle("Öffnen");
 
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("BibFiles (*.bib)", "*.bib");
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showOpenDialog(table.getScene().getWindow());
-		this.path = file.getAbsolutePath();
+		try {
+			this.path = file.getAbsolutePath();
+		} catch (NullPointerException e) {
+			System.out.println("Beim Öffnen wurde abbrechen geddrückt");
+			return;
+		}
 
 		BibTeXParser parser;
 		try {
 			parser = new BibTeXParser();
 			db = parser.parse(new FileReader(new File(path)));
 
+      this.entries.clear();
 			for (BibTeXObject entry : db.getObjects()) {
 				this.entries.add(((BibTeXEntry)entry));
+
 			}
 
 			updateTable();
@@ -201,13 +227,18 @@ public class MainWindowController extends AbstractController {
 	 */
 	public void saveAs() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Save as...");
+		fileChooser.setTitle("Speichern als...");
 
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("BibFiles (*.bib)", "*.bib");
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showSaveDialog(table.getScene().getWindow());
-		this.path = file.getAbsolutePath();
+		try {
+			this.path = file.getAbsolutePath();
+		} catch (NullPointerException e) {
+			System.out.println("Beim Speichern wurde abbrechen geddrückt");
+			return;
+		}
 		if (path != null) {
 			save();
 		}

@@ -34,13 +34,12 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="ANY" />
                            </accelerator></MenuItem>
-                        <MenuItem disable="true" mnemonicParsing="false" text="Exportieren" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Bearbeiten">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#add" text="Hinzufügen" />
-                    <MenuItem disable="true" mnemonicParsing="false" text="Löschen" />
+                    <MenuItem fx:id="removeMenu" disable="true" mnemonicParsing="false" onAction="#remove" text="Löschen" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">
@@ -54,9 +53,8 @@
          <center>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" onAction="#save" text="Save" />
-                  <Button disable="true" mnemonicParsing="false" onAction="#open" text="Load" />
-                  <Button disable="true" mnemonicParsing="false" text="Export" />
+                <Button mnemonicParsing="false" onAction="#save" text="Speichern" />
+                  <Button mnemonicParsing="false" onAction="#open" text="Laden" />
                   <Button mnemonicParsing="false" onAction="#add" text="+" />
                   <Button fx:id="removeBtn" disable="true" mnemonicParsing="false" onAction="#remove" text="-" />
               </items>
@@ -69,7 +67,7 @@
         <tabs>
           <Tab text="BIB-File Name">
                <content>
-                  <ScrollPane>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <TableView fx:id="table">
                            <columnResizePolicy>

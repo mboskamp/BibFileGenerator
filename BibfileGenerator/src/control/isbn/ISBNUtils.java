@@ -26,7 +26,7 @@ public class ISBNUtils {
 	 */
 	public static ISBN validateAndReturn(String isbn) {
 		if (validateISBN(isbn)) {
-			return new ISBN(isbn);
+			return new ISBN(cleanISBNString(isbn));
 		}
 		return null;
 	}
