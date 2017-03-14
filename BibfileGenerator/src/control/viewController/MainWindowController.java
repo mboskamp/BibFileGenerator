@@ -1,5 +1,6 @@
 package control.viewController;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -158,7 +159,7 @@ public class MainWindowController extends AbstractController {
 	 */
 	public void open() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Ã–ffnen");
+		fileChooser.setTitle("Öffnen");
 
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("BibFiles (*.bib)", "*.bib");
 		fileChooser.getExtensionFilters().add(extFilter);
@@ -167,7 +168,7 @@ public class MainWindowController extends AbstractController {
 		try {
 			this.path = file.getAbsolutePath();
 		} catch (NullPointerException e) {
-			System.out.println("Beim Ã–ffnen wurde abbrechen geddrÃ¼ckt");
+			System.out.println("Beim Öffnen wurde abbrechen geddrückt");
 			return;
 		}
 
@@ -249,6 +250,41 @@ public class MainWindowController extends AbstractController {
 		System.out.println("Merge");
 	}
 
+	/**
+	 * Shows a window with information about the application and the developers.
+	 */
+	public void about() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/About.fxml"));
+			Parent root1;
+			root1 = (Parent) fxmlLoader.load();
+
+			Stage stage = new Stage();
+			stage.setResizable(true);
+			stage.setTitle("Über");
+			stage.setScene(new Scene(root1));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Opens user guide in users PDF viewer. 
+	 */
+	public void openUserGuide() {
+		if (Desktop.isDesktopSupported()) {
+		    try {
+		    	System.out.println(System.getProperty("user.dir"));
+		        File myFile = new File("./src/UserGuide.pdf");
+		        Desktop.getDesktop().open(myFile);
+		    } catch (IOException e) {
+		        // no application registered for PDFs
+		    	e.printStackTrace();
+		    }
+		}
+	}
+	
 	/**
 	 * Updates the table of entries.
 	 */
