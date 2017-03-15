@@ -115,7 +115,7 @@ public class MainWindowController extends AbstractController {
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setResizable(false);
-			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzufÃ¼gen");
+			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzufügen");
 			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.setScene(new Scene(root1));
 			stage.show();
@@ -167,7 +167,7 @@ public class MainWindowController extends AbstractController {
 		try {
 			this.path = file.getAbsolutePath();
 		} catch (NullPointerException e) {
-			System.out.println("Beim Öffnen wurde abbrechen geddrückt");
+			System.out.println("Beim Öffnen wurde abbrechen gedrückt");
 			return;
 		}
 
@@ -234,7 +234,7 @@ public class MainWindowController extends AbstractController {
 		try {
 			this.path = file.getAbsolutePath();
 		} catch (NullPointerException e) {
-			System.out.println("Beim Speichern wurde abbrechen geddrÃ¼ckt");
+			System.out.println("Beim Speichern wurde abbrechen gedrückt");
 			return;
 		}
 		if (path != null) {
