@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -29,7 +30,7 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("BibFileGenerator");
-			//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(APPLICATION_ICON_PATH)));
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(APPLICATION_ICON_PATH)));
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

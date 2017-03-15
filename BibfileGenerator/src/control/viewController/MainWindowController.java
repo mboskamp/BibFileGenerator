@@ -35,7 +35,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.image.Image;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 
@@ -116,8 +116,7 @@ public class MainWindowController extends AbstractController {
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setResizable(false);
 			stage.setTitle("BibFileGenerator - Neuen Eintrag hinzuf√ºgen");
-			// stage.getIcons().add(new
-			// Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
+			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.setScene(new Scene(root1));
 			stage.show();
 		} catch (IOException e) {
@@ -263,6 +262,7 @@ public class MainWindowController extends AbstractController {
 			stage.setResizable(true);
 			stage.setTitle("‹ber");
 			stage.setScene(new Scene(root1));
+			stage.getIcons().add(new Image(getClass().getResourceAsStream(view.Main.getAPPLICATION_ICON_PATH())));
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
