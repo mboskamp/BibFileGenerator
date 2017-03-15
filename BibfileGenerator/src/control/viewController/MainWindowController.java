@@ -276,7 +276,7 @@ public class MainWindowController extends AbstractController {
 		if (Desktop.isDesktopSupported()) {
 		    try {
 		    	System.out.println(System.getProperty("user.dir"));
-		        File myFile = new File("./src/UserGuide.pdf");
+		        File myFile = new File("./src/BibFileGenerator_Benutzerhandbuch.pdf");
 		        Desktop.getDesktop().open(myFile);
 		    } catch (IOException e) {
 		        // no application registered for PDFs
